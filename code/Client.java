@@ -10,7 +10,7 @@ public class Client {
 	int choix=0;
     String machine = "localhost";
     int port = 1099;
-    Personne stubpers,pers = new PersonneImpl(args[args.lenght-1]);
+    Personne stubpers,pers = new PersonneImpl(args[args.length-1]);
     if(args.length==3) {
       machine = args[0];
       port = Integer.parseInt(args[1]);

@@ -1,18 +1,18 @@
 
-public class PersonneImpl1 implements Personne {
+public class PersonneImpl implements Personne {
    private String nom;
    private int id;
    private float solde;
    
 //constructeurs
    
-   public PersonneImpl1() {
+   public PersonneImpl() {
 	   this.id=0;
 	   this.nom="";
 	   this.solde=(float) 0.0;
    }
    
-   public PersonneImpl1(String name) {
+   public PersonneImpl(String name) {
 	   this.id=0;
 	   this.nom=name;
 	   this.solde=(float) 0.0;
@@ -34,10 +34,6 @@ public class PersonneImpl1 implements Personne {
 	
    public void setSolde(float solde) {
 		this.solde = solde;
-   }
-	
-   public PersonneImpl(String nom){
-		this.nom = nom;
    }
 
    public String getName() {
