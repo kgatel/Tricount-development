@@ -8,7 +8,8 @@ public class Serveur {
 	  public static void main(String args[]) {
 		Personne participants[];
 		Depense tabdepense[];
-	    int port  = 1099;
+		int nbparticipants = 0, nbdepenses=0;
+		int port  = 1099;
 	    if(args.length==1)
 	      port = Integer.parseInt(args[0]);
 	    try {
@@ -22,5 +23,5 @@ public class Serveur {
 	    } catch (Exception e) {
 	      System.out.println(e);
 	    }
-	  }
+	  } 
 	}
