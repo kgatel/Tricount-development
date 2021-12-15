@@ -1,3 +1,4 @@
+import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
@@ -5,10 +6,29 @@ import java.util.Arrays;
 
 
 public class Serveur {
+	public Personne participants[];
+	public Depense tabdepense[];
+	public int nbparticipants = 0, nbdepenses=0;
+	public boolean Addpersonne(String prenom) {
+		if (nbparticipants<6) {
+			participants[nbparticipants+1]= new PersonneImpl(prenom);
+			try {
+				participants[nbparticipants+1].setId(nbparticipants+1);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			nbparticipants+=1;
+			return true;
+		} else {
+			System.out.println("un utlisateur "+prenom+" a essayé de se connecter");
+			return false;
+		}
+		
+	}
+	
 	  public static void main(String args[]) {
-		Personne participants[];
-		Depense tabdepense[];
-		int nbparticipants = 0, nbdepenses=0;
+		
+		
 		int port  = 1099;
 	    if(args.length==1)
 	      port = Integer.parseInt(args[0]);

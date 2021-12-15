@@ -12,5 +12,11 @@ public class MethodesClientImpl implements MethodesClient {
 		Depense depense = new DepenseImpl(id,com,acheteur,val,receveur);
 		return depense;		
 	}
+
+	@Override
+	public boolean Connexion(String prenom) throws RemoteException {
+		AddPersonne(prenom);
+		return false;
+	}
   
 }

@@ -7,5 +7,6 @@ public interface Personne extends Remote {
    public String getName() throws RemoteException;
    public void setName(String nom) throws RemoteException;
    public float getSolde() throws RemoteException;
+   public void setId(int id) throws RemoteException;
 
 }
