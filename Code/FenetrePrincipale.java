@@ -50,11 +50,11 @@ public class FenetrePrincipale extends JFrame{
 				Depenses.setBorder(cadre);
 				
 				//Bouton Actualiser
-				JButton BoutonActualiser = new JButton(new ActualiserAction(this, "<html><h3>Demander l'équilibre</h3></html>"));
+				JButton BoutonDemanderEquilibre = new JButton(new DemanderEquilibreAction(this, "<html><h3>Demander l'équilibre</h3></html>"));
 			
 			Centre.add(TitreCentre,BorderLayout.NORTH);
 			Centre.add(Depenses,BorderLayout.CENTER);
-			Centre.add(BoutonActualiser,BorderLayout.SOUTH);
+			Centre.add(BoutonDemanderEquilibre,BorderLayout.SOUTH);
 			Centre.setBackground(Color.WHITE);
 			
 			//Création Est
@@ -79,9 +79,9 @@ public class FenetrePrincipale extends JFrame{
 				//Boutons
 				JPanel BouttonSud = new JPanel();
 				BouttonSud.setLayout(new BorderLayout());
-				JButton BoutonDepense = new JButton(new DepenseAction(this, "<html><h4>Ajouter Depenses</h4></html>"));
+				JButton BoutonAjouterDepense = new JButton(new AjouterDepenseAction(this, "<html><h4>Ajouter Depenses</h4></html>"));
 				JButton BoutonRembourser = new JButton(new RembourserAction(this, "<html><h4>Rembourser</h4></html>"));
-				BouttonSud.add(BoutonDepense,BorderLayout.NORTH);
+				BouttonSud.add(BoutonAjouterDepense,BorderLayout.NORTH);
 				BouttonSud.add(BoutonRembourser,BorderLayout.SOUTH);
 				
 			Est.add(TitreEst,BorderLayout.NORTH);

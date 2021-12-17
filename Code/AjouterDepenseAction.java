@@ -1,10 +1,10 @@
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
-public class DepenseAction extends AbstractAction {
+public class AjouterDepenseAction extends AbstractAction {
 	private FenetrePrincipale fenetre;
 	
-	public DepenseAction(FenetrePrincipale fenetre, String texte){
+	public AjouterDepenseAction(FenetrePrincipale fenetre, String texte){
 		super(texte);
 		
 		this.fenetre = fenetre;

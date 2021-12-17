@@ -1,10 +1,10 @@
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
-public class ActualiserAction extends AbstractAction {
+public class DemanderEquilibreAction extends AbstractAction {
 	private FenetrePrincipale fenetre;
 	
-	public ActualiserAction(FenetrePrincipale fenetre, String texte){
+	public DemanderEquilibreAction(FenetrePrincipale fenetre, String texte){
 		super(texte);
 		
 		this.fenetre = fenetre;
