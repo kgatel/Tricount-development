@@ -12,5 +12,6 @@ public class RembourserAction extends AbstractAction {
 	
 	public void actionPerformed(ActionEvent e) { 
 		//Action lors du clic sur le bouton calculer
+		
 	} 
 }
