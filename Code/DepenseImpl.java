@@ -3,11 +3,11 @@ import java.rmi.RemoteException;
 public class DepenseImpl implements Depense {
    private int id;
    private String com;
-   private Personne acheteur;
+   private int acheteur;
    private float valeur;
-   private Personne receveur;
+   private int receveur;
 
-   public DepenseImpl(int id, String com, Personne acheteur,float valeur,Personne receveur){
+   public DepenseImpl(int id, String com, int acheteur,float valeur,int receveur){
 	this.id = id;
 	this.com = com;
 	this.acheteur = acheteur;
@@ -22,19 +22,19 @@ public class DepenseImpl implements Depense {
 	this.id = id;
 	}
    
-   public Personne getAcheteur(){
+   public int getAcheteur(){
 	return this.acheteur;
 	}
    
-   public Personne getReceveur(){
+   public int getReceveur(){
 	return this.receveur;
 	}
    
-   public void setAcheteur(Personne acheteur){
+   public void setAcheteur(int acheteur){
 	this.acheteur = acheteur;
 	}
    
-   public void setReceveur(Personne receveur){
+   public void setReceveur(int receveur){
 	this.receveur = receveur;
 	}
    
@@ -52,5 +52,9 @@ public class DepenseImpl implements Depense {
    
    public String getCom(){
 	return this.com;
+	}
+
+	public String toText(){
+		return this.id + " : " + this.getCom() + " montant : " + this.getValeur() + " payé par "+this.getAcheteur()+" pour "+this.getReceveur();
 	}
 }
