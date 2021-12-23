@@ -9,7 +9,6 @@ public class Client {
 	public static void main(String args[]) {
 		String machine = "localhost";
 	    int port = 1099;
-	    int choix=0 ;
 	    Personne stubPers, Pers = new PersonneImpl("Thibaut");
 	    try {
 	    	Registry registry = LocateRegistry.getRegistry(machine, port);
