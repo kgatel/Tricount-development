@@ -131,7 +131,7 @@ public class FenetrePrincipale extends JFrame{
 			return panel;
 		}	
 		
-	private String affichage3Depenses(ArrayList<Depense> listDepense) throws RemoteException {
+	public String affichage3Depenses(ArrayList<Depense> listDepense) throws RemoteException {
 		String res="";
 		int indice = listDepense.size()-1;
 		while (indice>=0) {

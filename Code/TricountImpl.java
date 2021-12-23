@@ -5,6 +5,13 @@ public class TricountImpl implements Tricount {
 	public ArrayList<Personne> participant;
 	public ArrayList<Depense> depenses;
 	
+	public TricountImpl() throws RemoteException {
+		this.participant=new ArrayList<Personne>();
+		this.depenses=new ArrayList<Depense>();
+	}
+
+	
+	
 	public TricountImpl(Personne[] participants) throws RemoteException {
 		this.participant=new ArrayList<Personne>();
 		for (int i=0;i<participants.length;i++) {
@@ -42,6 +49,22 @@ public class TricountImpl implements Tricount {
 			System.out.println("Connection refusée de: " + prenom);
 			return false;
 		}
+	}
+
+
+
+	@Override
+	public ArrayList<Personne> GetParticipants() throws RemoteException {
+		// TODO Auto-generated method stub
+		return this.participant;
+	}
+
+
+
+	@Override
+	public ArrayList<Depense> GetDepense() throws RemoteException {
+		// TODO Auto-generated method stub
+		return this.depenses;
 	}
   
 }
