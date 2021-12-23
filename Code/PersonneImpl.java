@@ -2,20 +2,20 @@
 public class PersonneImpl implements Personne {
    private String nom;
    private int id;
-   private float solde;
+   private double solde;
    
 //constructeurs
    
    public PersonneImpl() {
 	   this.id=0;
 	   this.nom="";
-	   this.solde=(float) 0.0;
+	   this.solde=(double) 0.0;
    }
    
    public PersonneImpl(String name) {
 	   this.id=0;
 	   this.nom=name;
-	   this.solde=(float) 0.0;
+	   this.solde=(double) 0.0;
    }
 
    
@@ -28,11 +28,11 @@ public class PersonneImpl implements Personne {
 		this.id = id;
    }
 	
-   public float getSolde() {
+   public double getSolde() {
 		return solde;
    }
 	
-   public void setSolde(float solde) {
+   public void setSolde(double solde) {
 		this.solde = solde;
    }
 

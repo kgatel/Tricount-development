@@ -3,16 +3,16 @@ import java.rmi.RemoteException;
 public class DepenseImpl implements Depense {
    private int id;
    private String com;
-   private int acheteur;
-   private float valeur;
-   private int receveur;
+   private int acheteurID;
+   private double valeur;
+   private int receveurID;
 
-   public DepenseImpl(int id, String com, int acheteur,float valeur,int receveur){
+   public DepenseImpl(int id, String com, int acheteur,double d,int receveur){
 	this.id = id;
 	this.com = com;
-	this.acheteur = acheteur;
-	this.valeur = valeur;
-	this.receveur = receveur;
+	this.acheteurID = acheteur;
+	this.valeur = d;
+	this.receveurID = receveur;
 	}
    public int getId() {
 	   return this.id;
@@ -22,27 +22,27 @@ public class DepenseImpl implements Depense {
 	this.id = id;
 	}
    
-   public int getAcheteur(){
-	return this.acheteur;
+   public int getAcheteurID(){
+	return this.acheteurID;
 	}
    
-   public int getReceveur(){
-	return this.receveur;
+   public int getReceveurID(){
+	return this.receveurID;
 	}
    
-   public void setAcheteur(int acheteur){
-	this.acheteur = acheteur;
+   public void setAcheteurID(int acheteurID){
+	this.acheteurID = acheteurID;
 	}
    
-   public void setReceveur(int receveur){
-	this.receveur = receveur;
+   public void setReceveurID(int receveurID){
+	this.receveurID = receveurID;
 	}
    
-   public void setValeur(float valeur){
+   public void setValeur(double valeur){
 	this.valeur = valeur;
 	}
    
-   public float getValeur(){
+   public double getValeur(){
 	return this.valeur;
 	}
    
@@ -55,6 +55,6 @@ public class DepenseImpl implements Depense {
 	}
 
 	public String toText(){
-		return this.id + " : " + this.getCom() + " montant : " + this.getValeur() + " payé par "+this.getAcheteur()+" pour "+this.getReceveur();
+		return this.id + " : " + this.getCom() + " montant : " + this.getValeur() + " payé par "+this.getAcheteurID()+" pour "+this.getReceveurID();
 	}
 }

@@ -1,17 +1,24 @@
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 public class TricountImpl implements Tricount {
-	public Personne[] participant;
-	public Depense[] depenses;
-	public int nb_participants=0;
-	public int nb_depenses=0;
-
+	public ArrayList<Personne> participant;
+	public ArrayList<Depense> depenses;
+	
+	public TricountImpl(Personne[] participants) throws RemoteException {
+		this.participant=new ArrayList<Personne>();
+		for (int i=0;i<participants.length;i++) {
+			this.participant.add(participants[i]);
+		}
+		this.depenses=new ArrayList<Depense>();
+	}
+	
 	@Override
 	public void GetEquilibre(Personne[] pers) throws RemoteException {
-		for (int i=0; i<nb_participants ; i++) {
-			pers[i].setId(participant[i].getId());
-			pers[i].setName(participant[i].getName());
-			pers[i].setSolde(participant[i].getSolde());
+		for (int i=0; i<pers.length ; i++) {
+			pers[i].setId(participant.get(i).getId());
+			pers[i].setName(participant.get(i).getName());
+			pers[i].setSolde(participant.get(i).getSolde());
 			// pers[i]=participant[i]; voir si ça foncitonne juste avec cette ligne de commande 
 		}
 	}
@@ -19,19 +26,17 @@ public class TricountImpl implements Tricount {
 	@Override
 	public void AddDepense(int id, String com, int acheteur, float val, int[] receveur, int nb_receveur) throws RemoteException {
 		for (int i=0; i<nb_receveur; i++){
-			depenses[nb_depenses] = new DepenseImpl(id, com, acheteur, val, receveur[i]);
-			nb_depenses++;
-			participant[receveur[i]].setSolde(participant[receveur[i]].getSolde()-val);
-			participant[acheteur].setSolde(participant[acheteur].getSolde()+val);
+			depenses.add(new DepenseImpl(id, com, acheteur, val, receveur[i]));
+			participant.get(receveur[i]).setSolde(participant.get(receveur[i]).getSolde()-val);
+			participant.get(acheteur).setSolde(participant.get(acheteur).getSolde()+val);
 		}
 	}
 
 	@Override
 	public boolean Connexion(String prenom) throws RemoteException {
-		if (nb_participants < 6) {
+		if (participant.size() < 6) {
 			System.out.println("Une Nouvelle Personne vient de se connecter: " + prenom);
-			participant[nb_participants] = new PersonneImpl(prenom);
-			nb_participants++;
+			participant.add(new PersonneImpl(prenom));
 			return true;
 		}else{
 			System.out.println("Connection refusée de: " + prenom);
