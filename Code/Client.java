@@ -12,7 +12,6 @@ public class Client {
 		String machine = "localhost";
 	    int port = 1099;
 	    Personne stubPers, Pers = new PersonneImpl("Thibaut");
-		Tricount tritemp = new TricountImpl();
 	    try {
 	    	Registry registry = LocateRegistry.getRegistry(machine, port);
 	    	Tricount obj = (Tricount)registry.lookup("Tricountdesfamilles");
@@ -23,7 +22,6 @@ public class Client {
 					//On crée une nouvelle instance de notre SimpleFenetre
 					FenetrePrincipale fenetre = null;
 					try {
-						System.out.println(obj.Clone(tritemp));
 						fenetre = new FenetrePrincipale(obj);
 						fenetre.setVisible(true);
 					} catch (RemoteException e) {

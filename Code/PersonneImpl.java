@@ -1,4 +1,6 @@
-public class PersonneImpl implements Personne {
+import java.io.Serializable;
+
+public class PersonneImpl implements Personne, Serializable {
    private String nom;
    private int id;
    private double solde;

@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.rmi.RemoteException;
-
 import javax.swing.*;
 import javax.swing.border.*;
 import java.util.ArrayList;

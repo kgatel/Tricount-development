@@ -1,6 +1,5 @@
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.io.Serializable;
 
 public class TricountImpl implements Tricount {
 	
