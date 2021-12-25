@@ -25,7 +25,10 @@ public class ihm {
 		participant.get(4).setId(4);
 
 		System.out.println("Nombre de participant : "+participant.size());
-		
+		Tricount tri = new TricountImpl();
+		for (int i=0;i<participant.size();i++) {
+			this.tri
+		}
 		
 		//Fin TESSSSSST
 

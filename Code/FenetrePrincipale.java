@@ -8,11 +8,12 @@ import java.util.ArrayList;
 
 public class FenetrePrincipale extends JFrame{
 		
-		private ArrayList<Personne> participant;
-		
-		public FenetrePrincipale(ArrayList<Personne> participant) throws RemoteException{
+		//private ArrayList<Personne> participant;
+		private Tricount tricount;
+	
+		public FenetrePrincipale(Tricount tri) throws RemoteException{
 			super();
-			this.participant=participant;
+			this.tricount=tri;
 									
 			build();//On initialise notre fenêtre
 		}
@@ -73,12 +74,12 @@ public class FenetrePrincipale extends JFrame{
 			test.add(d5);
 			DepenseImpl d6 = new DepenseImpl(2, "Sapin de noel pour le voisin", 0,99.99,1);
 			test.add(d6);
-			JLabel Depenses = new JLabel(affichage3Depenses(test));
+			JLabel Depenses = new JLabel(affichage3Depenses());
 			Depenses.setBackground(new Color(121,210,230));
 			Depenses.setBorder(cadre);
 			
 			//Bouton Actualiser
-			Boutton BoutonDemanderEquilibre = new Boutton(new DemanderEquilibreAction(this.participant,this, "<html><h4>Demander Equilibre</h4></html>"),new Color(253,252,150));
+			Boutton BoutonDemanderEquilibre = new Boutton(new DemanderEquilibreAction(this.tricount.GetParticipants(),this, "<html><h4>Demander Equilibre</h4></html>"),new Color(253,252,150));
 	
 			Centre.add(TitreCentre,BorderLayout.NORTH);
 			Centre.add(Depenses,BorderLayout.CENTER);
@@ -111,8 +112,8 @@ public class FenetrePrincipale extends JFrame{
 				//Boutons
 				JPanel BouttonSud = new JPanel();
 				BouttonSud.setLayout(new BorderLayout());
-				Boutton BoutonAjouterDepense = new Boutton(new AjouterDepenseAction(this.participant,this, "<html><h4>Ajouter une dépense</h4></html>"),new Color(246,209,216));
-				Boutton BoutonRembourser = new Boutton(new RembourserAction(this.participant,this, "<html><h4>Rembourser</h4></html>"),new Color(176,242,182));
+				Boutton BoutonAjouterDepense = new Boutton(new AjouterDepenseAction(this.tricount.GetParticipants(),this, "<html><h4>Ajouter une dépense</h4></html>"),new Color(246,209,216));
+				Boutton BoutonRembourser = new Boutton(new RembourserAction(this.tricount.GetParticipants(),this, "<html><h4>Rembourser</h4></html>"),new Color(176,242,182));
 				
 				BouttonSud.add(BoutonAjouterDepense,BorderLayout.NORTH);
 				BouttonSud.add(BoutonRembourser,BorderLayout.SOUTH);
@@ -131,17 +132,17 @@ public class FenetrePrincipale extends JFrame{
 			return panel;
 		}	
 		
-	public String affichage3Depenses(ArrayList<Depense> listDepense) throws RemoteException {
+	public String affichage3Depenses() throws RemoteException {
 		String res="";
-		int indice = listDepense.size()-1;
+		int indice = tricount.GetDepense().size()-1;
 		while (indice>=0) {
-			res+="<html>"+"<h3>"+trouverPersonne(listDepense.get(indice).getAcheteurID()).getName()+" : ";
-			res+=listDepense.get(indice).getValeur()+"€ "+"<i>"+listDepense.get(indice).getCom()+"</i></h3><h5>&nbsp; &nbsp; ";
-			res+=trouverPersonne(listDepense.get(indice).getReceveurID()).getName();
-			int id=listDepense.get(indice).getId();
-			while ((indice-1>=0)&&(listDepense.get(indice-1).getId()==id)){
+			res+="<html>"+"<h3>"+trouverPersonne(tricount.GetDepense().get(indice).getAcheteurID()).getName()+" : ";
+			res+=tricount.GetDepense().get(indice).getValeur()+"€ "+"<i>"+tricount.GetDepense().get(indice).getCom()+"</i></h3><h5>&nbsp; &nbsp; ";
+			res+=trouverPersonne(tricount.GetDepense().get(indice).getReceveurID()).getName();
+			int id=tricount.GetDepense().get(indice).getId();
+			while ((indice-1>=0)&&(tricount.GetDepense().get(indice-1).getId()==id)){
 				indice--;
-				res+=","+trouverPersonne(listDepense.get(indice).getReceveurID()).getName();
+				res+=","+trouverPersonne(tricount.GetDepense().get(indice).getReceveurID()).getName();
 			}
 			res+="</h5>";
 			if (indice>0) {
@@ -155,8 +156,8 @@ public class FenetrePrincipale extends JFrame{
 	private String affichageEquilibre() throws RemoteException {
 		String res="<html>";
 		int indice = 0;
-		while (indice<this.participant.size()) {
-			res+="<h3>"+this.participant.get(indice).getName()+" : "+this.participant.get(indice).getSolde()+"</h3>";
+		while (indice<this.tricount.GetParticipants().size()) {
+			res+="<h3>"+this.tricount.GetParticipants().get(indice).getName()+" : "+this.tricount.GetParticipants().get(indice).getSolde()+"</h3>";
 			indice++;
 		}
 		res+="</html>";
@@ -165,9 +166,9 @@ public class FenetrePrincipale extends JFrame{
 	
 	private Personne trouverPersonne (int id) throws RemoteException {
 		Personne res = null;
-		for (int i=0;i<this.participant.size();i++) {
-			if (id==this.participant.get(i).getId()) {
-				res=this.participant.get(i);
+		for (int i=0;i<this.tricount.GetParticipants().size();i++) {
+			if (id==this.tricount.GetParticipants().get(i).getId()) {
+				res=this.tricount.GetParticipants().get(i);
 			}
 		}
 		return res;

@@ -9,4 +9,5 @@ public interface Tricount extends Remote {
 	public boolean Connexion (String prenom) throws RemoteException;
 	public ArrayList<Personne> GetParticipants() throws RemoteException;
 	public ArrayList<Depense> GetDepense() throws RemoteException;
+	public boolean Clone(Tricount tri) throws RemoteException;
 }

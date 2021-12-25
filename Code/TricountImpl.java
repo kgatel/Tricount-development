@@ -1,5 +1,6 @@
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.io.Serializable;
 
 public class TricountImpl implements Tricount {
 	public ArrayList<Personne> participant;
@@ -55,8 +56,11 @@ public class TricountImpl implements Tricount {
 
 	@Override
 	public ArrayList<Personne> GetParticipants() throws RemoteException {
-		// TODO Auto-generated method stub
-		return this.participant;
+		/*ArrayList<Personne> participant1 = new ArrayList<Personne>();
+		for (int i=0; i<participant.size(); i++) {
+			participant1.add(participant.get(i));
+		}*/
+		return this.participant ;
 	}
 
 
@@ -66,5 +70,28 @@ public class TricountImpl implements Tricount {
 		// TODO Auto-generated method stub
 		return this.depenses;
 	}
+
+
+
+	@Override
+	public boolean Clone(Tricount tri) throws RemoteException {
+		// TODO Auto-generated method stub
+		for (int i=0; i<participant.size(); i++) {
+			if (tri.GetParticipants().get(i)!=null) {
+				tri.GetParticipants().set(i, this.participant.get(i));
+			} else {
+				tri.GetParticipants().add(this.participant.get(i));
+			}
+		}
+		for (int i=0; i<depenses.size(); i++) {
+			if (tri.GetDepense().get(i)!=null) {
+				tri.GetDepense().set(i, this.depenses.get(i));
+			} else {
+				tri.GetDepense().add(this.depenses.get(i));
+			}
+		}
+		return true;
+	}	
   
 }
+
