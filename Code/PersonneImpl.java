@@ -18,6 +18,12 @@ public class PersonneImpl implements Personne, Serializable {
 	   this.nom=name;
 	   this.solde=(double) 0.0;
    }
+   
+   public PersonneImpl(String name, int i) {
+	   this.id=i;
+	   this.nom=name;
+	   this.solde=(double) 0.0;
+   }
 
    
 //accesseurs

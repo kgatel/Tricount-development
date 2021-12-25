@@ -44,9 +44,10 @@ public class TricountImpl implements Tricount {
 	public boolean Connexion(String prenom) throws RemoteException {
 		if (participant.size() < 6) {
 			System.out.println("Une Nouvelle Personne vient de se connecter: " + prenom);
-			participant.add(new PersonneImpl(prenom));
+			int i = participant.size();
+			participant.add(new PersonneImpl(prenom,i));
 			return true;
-		}else{
+		} else {
 			System.out.println("Connection refusée de: " + prenom);
 			return false;
 		}
