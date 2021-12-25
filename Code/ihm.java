@@ -25,9 +25,11 @@ public class ihm {
 		participant.get(4).setId(4);
 
 		System.out.println("Nombre de participant : "+participant.size());
-		Tricount tri = new TricountImpl();
+		
+		Personne[] participantTab = new Personne[participant.size()];
+		
 		for (int i=0;i<participant.size();i++) {
-			this.tri
+			participantTab[i] = participant.get(i);
 		}
 		
 		//Fin TESSSSSST
@@ -37,7 +39,7 @@ public class ihm {
 				//On crée une nouvelle instance de notre SimpleFenetre
 				FenetrePrincipale fenetre = null;
 				try {
-					fenetre = new FenetrePrincipale(participant);
+					fenetre = new FenetrePrincipale(new TricountImpl(participantTab));
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

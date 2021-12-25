@@ -1,21 +1,37 @@
 import java.awt.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.rmi.RemoteException;
+
 import javax.swing.*;
 import javax.swing.border.*;
-import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 
-public class FenetreRembourser extends JFrame {
+public class FenetreRembourser extends JFrame implements ItemListener{
 	
+		
 		public ArrayList<Personne> participant;
 		private JTextArea saisieMontant;
-		private ArrayList<JCheckBox> listcheckbox;
+		//private ArrayList<JCheckBox> listcheckbox;
+		static JComboBox combobox;
 
-		public FenetreRembourser(ArrayList<Personne> participant){
+		public FenetreRembourser(ArrayList<Personne> participant) throws RemoteException{
 			super();
 			saisieMontant=null;
 			this.participant=participant;
-			this.listcheckbox = new ArrayList<JCheckBox>();
+			//this.listcheckbox = new ArrayList<JCheckBox>();
+			String[] prenoms = new String[participant.size()];
+			for (int i=0;i<prenoms.length;i++) {
+				prenoms[i]=participant.get(i).getName();
+			}
+			combobox = new JComboBox(prenoms);
+			combobox.getEditor().getEditorComponent().setBackground(Color.white);
+			combobox.setBounds(10, 10, 250, 26);
+			//combobox.setVisible(true);
+	        combobox.setEditable(true);
+			combobox.addItemListener(this);
+			
 			build();//On initialise notre fenêtre
 		}
 		
@@ -35,13 +51,23 @@ public class FenetreRembourser extends JFrame {
 			this.saisieMontant = saisieMontant;
 		}
 
-		public ArrayList<JCheckBox> getListcheckbox() {
+		/*public ArrayList<JCheckBox> getListcheckbox() {
 			return listcheckbox;
 		}
 
 		public void setListcheckbox(ArrayList<JCheckBox> listcheckbox) {
 			this.listcheckbox = listcheckbox;
+		}*/
+		
+		
+		public JComboBox getCombobox() {
+			return combobox;
 		}
+
+		public static void setCombobox(JComboBox combobox) {
+			FenetreRembourser.combobox = combobox;
+		}
+
 		
 		private void build(){
 			//setTitle("Rembourser"); //On donne un titre à l'application
@@ -52,7 +78,7 @@ public class FenetreRembourser extends JFrame {
 			setContentPane(buildContentPane());
 		}
 		
-		
+	
 		private JPanel buildContentPane(){
 			JPanel panel = new JPanel();
 			panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 10));
@@ -71,7 +97,7 @@ public class FenetreRembourser extends JFrame {
 			Centre.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 			Centre.setLayout(new BorderLayout(10,10));
 				//Text Centre
-				JLabel TitreCentre = new JLabel("<html><h3>Pour qui :</h3></html>");
+				JLabel TitreCentre = new JLabel("<html><h3>Qui :</h3></html>");
 				TitreCentre.setBackground(new Color(104,229,100));
 				TitreCentre.setBorder(cadre);
 				TitreCentre.setHorizontalAlignment(SwingConstants.CENTER);
@@ -81,9 +107,9 @@ public class FenetreRembourser extends JFrame {
 				CheckboxNom.setBackground(Color.white);
 				CheckboxNom.setLayout(new BoxLayout(CheckboxNom, BoxLayout.Y_AXIS));		
 				CheckboxNom.setBorder(cadre);
-				
+				CheckboxNom.add(combobox);
 								
-				for (int i=0;i<participant.size();i++) {
+				/*for (int i=0;i<participant.size();i++) {
 					try {
 						listcheckbox.add(new JCheckBox("<html><h3>"+participant.get(i).getName()+"</h3></html>"));
 					} catch (Exception e) {
@@ -92,7 +118,7 @@ public class FenetreRembourser extends JFrame {
 					
 					listcheckbox.get(i).setSelected(false);
 					CheckboxNom.add(listcheckbox.get(i));
-				}
+				}*/
 				
 				
 
@@ -148,5 +174,11 @@ public class FenetreRembourser extends JFrame {
 			
 			
 			return panel;
+		}
+
+		@Override
+		public void itemStateChanged(ItemEvent arg0) {
+			// TODO Auto-generated method stub
+			
 		}
 	}

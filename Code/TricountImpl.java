@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.io.Serializable;
 
 public class TricountImpl implements Tricount {
+	
 	public ArrayList<Personne> participant;
 	public ArrayList<Depense> depenses;
 	

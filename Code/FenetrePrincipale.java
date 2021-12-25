@@ -10,7 +10,15 @@ public class FenetrePrincipale extends JFrame{
 		
 		//private ArrayList<Personne> participant;
 		private Tricount tricount;
-	
+		
+		public Tricount getTricount() {
+			return tricount;
+		}
+
+		public void setTricount(Tricount tricount) {
+			this.tricount = tricount;
+		}
+
 		public FenetrePrincipale(Tricount tri) throws RemoteException{
 			super();
 			this.tricount=tri;

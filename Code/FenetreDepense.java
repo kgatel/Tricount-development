@@ -162,7 +162,7 @@ public class FenetreDepense extends JFrame{
 			EstCentre.add(this.saisieCommentaire,BorderLayout.CENTER);
 					
 				
-
+			
 			Boutton BoutonAjouterDepense = new Boutton(new AjouterDepenseAction2(this, "<html><h4>Ajouter la dépense</h4></html>"),new Color(246,209,216));
 				
 			Est.add(EstNord,BorderLayout.NORTH);

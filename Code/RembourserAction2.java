@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import javax.swing.AbstractAction;
 
 public class RembourserAction2 extends AbstractAction {
+	
 	private FenetreRembourser fenetre;
 	
 	public RembourserAction2(FenetreRembourser fenetre, String texte){
@@ -24,11 +25,12 @@ public class RembourserAction2 extends AbstractAction {
 		System.out.println("Montant : "+montant+"€");
 		
 		int nb_cases_cochees=0;
-		for (int i=0;i<fenetre.getListcheckbox().size();i++) {
+		/*for (int i=0;i<fenetre.getListcheckbox().size();i++) {
 			if (fenetre.getListcheckbox().get(i).isSelected()) {
 				nb_cases_cochees++;
 			}
-		}
+		}*/
+		nb_cases_cochees=1;
 		
 		if (nb_cases_cochees!=1) {
 			System.out.println("Veuillez sélectionner une et une seule personne à rembourser");
@@ -40,11 +42,13 @@ public class RembourserAction2 extends AbstractAction {
 				else {
 					Personne p = null;
 					System.out.println("Montant Valide - Dépense acceptée");
-					for (int j=0;j<fenetre.getListcheckbox().size();j++) {
+					/*for (int j=0;j<fenetre.getListcheckbox().size();j++) {
 						if (fenetre.getListcheckbox().get(j).isSelected()) {
 							p = fenetre.getParticipant().get(j);
 						}
-					}
+					}*/
+					int indiceP = fenetre.getCombobox().getSelectedIndex();
+					p = fenetre.getParticipant().get(indiceP);
 					try {
 						System.out.println("Virement de "+montant+"€ vers le compte de "+p.getName());
 					} catch (RemoteException e1) {

@@ -26,3 +26,9 @@
 /MonBoutton.class
 /JGradientButton.class
 /Client$1.class
+/FenetreConfirmationDepense.class
+/ConfirmerDepenseAction.class
+/AnnulerDepenseAction.class
+/AnnulerDepense.class
+/AnnulerConfirmationDepenseAction.class
+/AnnulerADepenseAction.class

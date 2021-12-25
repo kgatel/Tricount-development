@@ -7,6 +7,10 @@ import javax.swing.AbstractAction;
 public class AjouterDepenseAction2 extends AbstractAction {
 	private FenetreDepense fenetre;
 	
+	public FenetreDepense getFenetre() {
+		return fenetre;
+	}
+	
 	public AjouterDepenseAction2(FenetreDepense fenetre, String texte){
 		super(texte);
 		this.fenetre = fenetre;
@@ -29,46 +33,49 @@ public class AjouterDepenseAction2 extends AbstractAction {
 		System.out.println("Montant : "+montant+"€");
 		
 		//On vérifie que le montant est valide
-		if (isValidFloat(montant)) {
+		if (!isValidFloat(montant)) {
+			System.out.println("Montant invalide, saisie incorrect");
+		}
+		else {
 			if (Double.parseDouble(montant)<0.01) {
 				System.out.println("Veuillez rentrer une somme supérieure à 0.01€");
 			}
 			else {
-				System.out.println("Montant Valide - Dépense acceptée");
-				ArrayList<Personne> listPersonne = new ArrayList<Personne>();
-				for (int i=0;i<fenetre.getListcheckbox().size();i++) {
-					if (fenetre.getListcheckbox().get(i).isSelected()) {
-						listPersonne.add(fenetre.getParticipant().get(i));
-					}
+				if (commentaire.equals("")) {
+					System.out.println("Veuillez rentrer le commentaire de votre dépense");
 				}
-				
-				//On vérifie qu'au moins une personne a été selectionnée
-				if (listPersonne.size()==0) {
-					System.out.println("Veuillez selectionnez au moins une personne");
-				}else {
-					System.out.println("Dépense divisée en "+listPersonne.size()+" : ");
-					for (int j=0;j<listPersonne.size();j++) {
-						try {
-							System.out.print(listPersonne.get(j).getName());
-							if (j!=listPersonne.size()-1) {
-								System.out.print(" - ");
+				else {
+					
+					ArrayList<Personne> listPersonne = new ArrayList<Personne>();
+					for (int i=0;i<fenetre.getListcheckbox().size();i++) {
+						if (fenetre.getListcheckbox().get(i).isSelected()) {
+							listPersonne.add(fenetre.getParticipant().get(i));
+						}
+					}
+					
+					//On vérifie qu'au moins une personne a été selectionnée
+					if (listPersonne.size()==0) {
+						System.out.println("Veuillez selectionnez au moins une personne");
+					}else {
+						Personne[] participantTab = new Personne[this.fenetre.getParticipant().size()];
+						int indice=0;
+						for (int i=0;i<this.fenetre.getParticipant().size();i++) {
+							if (this.fenetre.getListcheckbox().get(i).isSelected()) {
+								participantTab[indice] = this.fenetre.getParticipant().get(i);
+								indice++;
 							}
-						} catch (RemoteException e1) {
+						}
+						try {
+							FenetreConfirmationDepense f = new FenetreConfirmationDepense(fenetre,Double.parseDouble(montant),commentaire,participantTab);
+							f.setVisible(true);
+						} catch (NumberFormatException | RemoteException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 					}
-					System.out.println();
 				}
 			}
-		}
-		else{
-			System.out.println("Montant invalide, saisie incorrect");
-		}
-		
-	
-		this.fenetre.dispose();
-		
+		}		
 	}
 	
 	private static boolean isValidFloat(String str) {
