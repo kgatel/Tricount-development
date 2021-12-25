@@ -32,11 +32,11 @@ public class TricountImpl implements Tricount {
 	}
 
 	@Override
-	public void AddDepense(int id, String com, int acheteur, float val, int[] receveur, int nb_receveur) throws RemoteException {
-		for (int i=0; i<nb_receveur; i++){
-			depenses.add(new DepenseImpl(id, com, acheteur, val, receveur[i]));
-			participant.get(receveur[i]).setSolde(participant.get(receveur[i]).getSolde()-val);
-			participant.get(acheteur).setSolde(participant.get(acheteur).getSolde()+val);
+	public void AddDepense(int id, String com, int acheteurID, double val, int[] receveurID) throws RemoteException {
+		for (int i=0; i<receveurID.length; i++){
+			depenses.add(new DepenseImpl(id, com, acheteurID, val, receveurID[i]));
+			participant.get(receveurID[i]).setSolde(participant.get(receveurID[i]).getSolde()-val);
+			participant.get(acheteurID).setSolde(participant.get(acheteurID).getSolde()+val);
 		}
 	}
 
