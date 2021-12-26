@@ -4,13 +4,14 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
+import javax.swing.JFrame;
 
-public class AnnulerADepenseAction extends AbstractAction {
+public class AnnulerAction extends AbstractAction {
 	
-	private FenetreConfirmationDepense fenetre;
+	private JFrame fenetre;
 	
-	public AnnulerADepenseAction(FenetreConfirmationDepense fenetre, String texte){
-		super(texte);
+	public AnnulerAction(JFrame fenetre){
+		super("<html><h4>Annuler</h4></html>");
 		this.fenetre = fenetre;
 	}
 	
@@ -19,7 +20,6 @@ public class AnnulerADepenseAction extends AbstractAction {
 		
 		//Ajouter au serveur la dépense avec les personnes cochées puis fermez la fenêtre si la dépense est valide
 		
-		System.out.println("Dépense annulé");
 		this.fenetre.dispose();
 		
 	}

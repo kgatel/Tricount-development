@@ -33,7 +33,7 @@ public class Client {
 					//On crée une nouvelle instance de notre SimpleFenetre
 					FenetrePrincipale fenetre = null;
 					try {
-						fenetre = new FenetrePrincipale(obj);
+						fenetre = new FenetrePrincipale(obj,stubPers);
 						fenetre.setVisible(true);
 					} catch (RemoteException e) {
 						// TODO Auto-generated catch block

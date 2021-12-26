@@ -32,3 +32,6 @@
 /AnnulerDepense.class
 /AnnulerConfirmationDepenseAction.class
 /AnnulerADepenseAction.class
+/AnnulerAction.class
+/FenetreConfirmationRembourser.class
+/ConfirmerRembourserAction.class

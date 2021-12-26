@@ -1,16 +1,13 @@
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
 
 public class RembourserAction extends AbstractAction {
 	private FenetrePrincipale fenetre;
-	private ArrayList<Personne> participant;
 	
-	public RembourserAction(ArrayList<Personne> participant,FenetrePrincipale fenetre, String texte){
+	public RembourserAction(FenetrePrincipale fenetre, String texte){
 		super(texte);
-		this.participant=participant;
 		this.fenetre = fenetre;
 	}
 	
@@ -18,7 +15,7 @@ public class RembourserAction extends AbstractAction {
 		//Action lors du clic sur le bouton calculer
 		FenetreRembourser fenetreremb = null;
 		try {
-			fenetreremb = new FenetreRembourser(this.participant);
+			fenetreremb = new FenetreRembourser(this.fenetre);
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

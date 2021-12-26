@@ -31,7 +31,8 @@ public class DemanderEquilibreAction extends AbstractAction {
 		}
 		
 		try {
-			fenetre = new FenetrePrincipale(new TricountImpl(participantTab));
+			fenetre = new FenetrePrincipale(new TricountImpl(participantTab),fenetre.getUtilisateur());
+			System.out.println("\n\nMise à jour des équilibres faite");
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

@@ -10,20 +10,18 @@ import java.util.ArrayList;
 
 public class FenetreRembourser extends JFrame implements ItemListener{
 	
-		
-		public ArrayList<Personne> participant;
+		private FenetrePrincipale fenetrePrincipale; 
 		private JTextArea saisieMontant;
-		//private ArrayList<JCheckBox> listcheckbox;
 		static JComboBox combobox;
 
-		public FenetreRembourser(ArrayList<Personne> participant) throws RemoteException{
+		public FenetreRembourser(FenetrePrincipale fenetrePrincipale) throws RemoteException{
 			super();
+			this.fenetrePrincipale=fenetrePrincipale;
 			saisieMontant=null;
-			this.participant=participant;
 			//this.listcheckbox = new ArrayList<JCheckBox>();
-			String[] prenoms = new String[participant.size()];
+			String[] prenoms = new String[this.fenetrePrincipale.getTricount().GetParticipants().size()];
 			for (int i=0;i<prenoms.length;i++) {
-				prenoms[i]=participant.get(i).getName();
+				prenoms[i]=this.fenetrePrincipale.getTricount().GetParticipants().get(i).getName();
 			}
 			combobox = new JComboBox(prenoms);
 			combobox.getEditor().getEditorComponent().setBackground(Color.white);
@@ -35,12 +33,12 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 			build();//On initialise notre fenêtre
 		}
 		
-		public ArrayList<Personne> getParticipant() {
-			return participant;
+		public FenetrePrincipale getFenetrePrincipale() {
+			return fenetrePrincipale;
 		}
 
-		public void setParticipant(ArrayList<Personne> participant) {
-			this.participant = participant;
+		public void setFenetrePrincipale(FenetrePrincipale fenetrePrincipale) {
+			this.fenetrePrincipale = fenetrePrincipale;
 		}
 
 		public JTextArea getSaisieMontant() {
@@ -51,14 +49,6 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 			this.saisieMontant = saisieMontant;
 		}
 
-		/*public ArrayList<JCheckBox> getListcheckbox() {
-			return listcheckbox;
-		}
-
-		public void setListcheckbox(ArrayList<JCheckBox> listcheckbox) {
-			this.listcheckbox = listcheckbox;
-		}*/
-		
 		
 		public JComboBox getCombobox() {
 			return combobox;
@@ -70,8 +60,7 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 
 		
 		private void build(){
-			//setTitle("Rembourser"); //On donne un titre à l'application
-			setSize(820,540); //On donne une taille à notre fenêtre
+			setSize(540,340); //On donne une taille à notre fenêtre
 			setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
 			setResizable(false); //On interdit la redimensionnement de la fenêtre
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //On dit à l'application de se fermer lors du clic sur la croix
@@ -159,12 +148,19 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 			//EstCentre.add(texte,BorderLayout.CENTER);
 			EstNord.add(Euro,BorderLayout.EAST);
 					
-				
-
-			Boutton BoutonAjouterDepense = new Boutton(new RembourserAction2(this, "<html><h4>Rembourser</h4></html>"),new Color(176,242,182));
-				
-			Est.add(EstNord,BorderLayout.NORTH);
-			Est.add(BoutonAjouterDepense,BorderLayout.CENTER);
+			JPanel EstSud = new JPanel();
+			
+			Boutton BoutonAjouterRembourser = new Boutton(new RembourserAction2(this, "<html><h4>Rembourser</h4></html>"),new Color(176,242,182));
+			Boutton BoutonAnnulerRembourser = new Boutton(new AnnulerAction(this),new Color(190,190,190));
+			
+			EstSud.add(BoutonAjouterRembourser,BorderLayout.NORTH);
+			EstSud.add(BoutonAnnulerRembourser,BorderLayout.CENTER);
+			EstNord.setBackground(Color.WHITE);
+			//EstNord.setLayout(new BorderLayout(10,10));
+			EstNord.setBorder(cadre);
+			
+			Est.add(EstNord,BorderLayout.CENTER);
+			Est.add(EstSud,BorderLayout.SOUTH);
 			
 			//Ajout Panel Principal
 			panel.setBackground(Color.GRAY);

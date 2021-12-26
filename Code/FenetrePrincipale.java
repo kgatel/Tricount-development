@@ -9,7 +9,16 @@ public class FenetrePrincipale extends JFrame{
 		
 		//private ArrayList<Personne> participant;
 		private Tricount tricount;
+		private Personne utilisateur;
 		
+		public Personne getUtilisateur() {
+			return utilisateur;
+		}
+
+		public void setUtilisateur(Personne utilisateur) {
+			this.utilisateur = utilisateur;
+		}
+
 		public Tricount getTricount() {
 			return tricount;
 		}
@@ -18,10 +27,10 @@ public class FenetrePrincipale extends JFrame{
 			this.tricount = tricount;
 		}
 
-		public FenetrePrincipale(Tricount tri) throws RemoteException{
+		public FenetrePrincipale(Tricount tri,Personne utilisateur) throws RemoteException{
 			super();
 			this.tricount=tri;
-									
+			this.utilisateur=utilisateur;
 			build();//On initialise notre fenêtre
 		}
 		
@@ -32,6 +41,7 @@ public class FenetrePrincipale extends JFrame{
 			setResizable(false); //On interdit la redimensionnement de la fenêtre
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //On dit à l'application de se fermer lors du clic sur la croix
 			setContentPane(buildContentPane());
+			
 		}
 		
 		
@@ -57,36 +67,16 @@ public class FenetrePrincipale extends JFrame{
 				TitreCentre.setBackground(new Color(121,210,230));
 				TitreCentre.setBorder(cadre);
 				TitreCentre.setHorizontalAlignment(SwingConstants.CENTER);
+			
 				
-				/*JLabel Depenses = new JLabel("<html>" +
-						"<h3>Paul : 45€ Pizza</h3><h5>&nbsp; &nbsp; Paul,Michel,Eugène</h5>" +
-						"<br><br>" +
-						"<h3>Michel : 12€ Glaces</h3><h5>&nbsp; &nbsp; Michel,Jean</h5>" + 
-						"<br><br>" +
-						"<h3>Jean : 27€ Saucissons</h3><h5>&nbsp; &nbsp; Michel,Eugène</h5>" +
-						"</html>");*/
-				
-				
-			ArrayList<Depense> test = new ArrayList<Depense>();
-			//DepenseImpl(int id, String com, int acheteur,double d,int receveur){
-			DepenseImpl d1 = new DepenseImpl(0, "Pizzas", 3,35.7,2);
-			test.add(d1);
-			DepenseImpl d2 = new DepenseImpl(0, "Pizzas", 3,35.7,4);
-			test.add(d2);
-			DepenseImpl d3 = new DepenseImpl(1, "Paellas", 4,51.3,1);
-			test.add(d3);
-			DepenseImpl d4 = new DepenseImpl(1, "Paellas", 4,51.3,2);
-			test.add(d4);
-			DepenseImpl d5 = new DepenseImpl(1, "Paellas", 4,51.3,3);
-			test.add(d5);
-			DepenseImpl d6 = new DepenseImpl(2, "Sapin de noel pour le voisin", 0,99.99,1);
-			test.add(d6);
+			Boutton BoutonDemanderEquilibre = new Boutton(new DemanderEquilibreAction(this.tricount.GetParticipants(),this, "<html><h4>Demander Equilibre</h4></html>"),new Color(253,252,150));
+			
 			JLabel Depenses = new JLabel(affichage3Depenses());
 			Depenses.setBackground(new Color(121,210,230));
 			Depenses.setBorder(cadre);
 			
 			//Bouton Actualiser
-			Boutton BoutonDemanderEquilibre = new Boutton(new DemanderEquilibreAction(this.tricount.GetParticipants(),this, "<html><h4>Demander Equilibre</h4></html>"),new Color(253,252,150));
+			
 	
 			Centre.add(TitreCentre,BorderLayout.NORTH);
 			Centre.add(Depenses,BorderLayout.CENTER);
@@ -105,22 +95,15 @@ public class FenetrePrincipale extends JFrame{
 				TitreEst.setHorizontalAlignment(SwingConstants.CENTER);
 				
 				JLabel equilibre = new JLabel(affichageEquilibre());
-				/*JLabel equilibre = new JLabel("<html>" +
-						"<h3>Paul : 30€ </h3>" +
-						"<h3>Michel : -22.5€ </h3>" +
-						"<h3>Jean : 21€ </h3>" +
-						"<h3>Eugène : -13.5€ </h3>" +
-						"<h3>Edouard : 0€ </h3>" +
-						"<h3>Maurice : 0€ </h3>" +
-						"</html>");*/
+				
 				equilibre.setBackground(new Color(121,210,230));
 				equilibre.setBorder(cadre);
 				
 				//Boutons
 				JPanel BouttonSud = new JPanel();
 				BouttonSud.setLayout(new BorderLayout());
-				Boutton BoutonAjouterDepense = new Boutton(new AjouterDepenseAction(this.tricount.GetParticipants(),this, "<html><h4>Ajouter une dépense</h4></html>"),new Color(246,209,216));
-				Boutton BoutonRembourser = new Boutton(new RembourserAction(this.tricount.GetParticipants(),this, "<html><h4>Rembourser</h4></html>"),new Color(176,242,182));
+				Boutton BoutonAjouterDepense = new Boutton(new AjouterDepenseAction(this, "<html><h4>Ajouter une dépense</h4></html>"),new Color(246,209,216));
+				Boutton BoutonRembourser = new Boutton(new RembourserAction(this, "<html><h4>Rembourser</h4></html>"),new Color(176,242,182));
 				
 				BouttonSud.add(BoutonAjouterDepense,BorderLayout.NORTH);
 				BouttonSud.add(BoutonRembourser,BorderLayout.SOUTH);
@@ -141,6 +124,8 @@ public class FenetrePrincipale extends JFrame{
 		
 	public String affichage3Depenses() throws RemoteException {
 		String res="";
+		System.out.println("Taille du tableau de dépense : "+this.tricount.GetDepense().size());
+		System.out.println("Taille du tableau de personne : "+this.tricount.GetParticipants().size());
 		int indice = tricount.GetDepense().size()-1;
 		while (indice>=0) {
 			res+="<html>"+"<h3>"+trouverPersonne(tricount.GetDepense().get(indice).getAcheteurID()).getName()+" : ";

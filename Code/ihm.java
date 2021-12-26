@@ -24,7 +24,6 @@ public class ihm {
 		participant.add(new PersonneImpl("Kev"));
 		participant.get(4).setId(4);
 
-		System.out.println("Nombre de participant : "+participant.size());
 		
 		Personne[] participantTab = new Personne[participant.size()];
 		
@@ -39,7 +38,7 @@ public class ihm {
 				//On crée une nouvelle instance de notre SimpleFenetre
 				FenetrePrincipale fenetre = null;
 				try {
-					fenetre = new FenetrePrincipale(new TricountImpl(participantTab));
+					fenetre = new FenetrePrincipale(new TricountImpl(participantTab),participant.get(0));
 				} catch (RemoteException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

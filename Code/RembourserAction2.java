@@ -22,7 +22,6 @@ public class RembourserAction2 extends AbstractAction {
 		//Montant
 		String montant = fenetre.getSaisieMontant().getText();
 		montant = montant.substring(3);
-		System.out.println("Montant : "+montant+"€");
 		
 		int nb_cases_cochees=0;
 		/*for (int i=0;i<fenetre.getListcheckbox().size();i++) {
@@ -41,27 +40,36 @@ public class RembourserAction2 extends AbstractAction {
 				}
 				else {
 					Personne p = null;
-					System.out.println("Montant Valide - Dépense acceptée");
-					/*for (int j=0;j<fenetre.getListcheckbox().size();j++) {
-						if (fenetre.getListcheckbox().get(j).isSelected()) {
-							p = fenetre.getParticipant().get(j);
-						}
-					}*/
-					int indiceP = fenetre.getCombobox().getSelectedIndex();
-					p = fenetre.getParticipant().get(indiceP);
+					int indiceP = this.fenetre.getCombobox().getSelectedIndex();
 					try {
-						System.out.println("Virement de "+montant+"€ vers le compte de "+p.getName());
+						p = this.fenetre.getFenetrePrincipale().getTricount().GetParticipants().get(indiceP);
+					} catch (RemoteException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					try {
+						if (p.getId()==this.fenetre.getFenetrePrincipale().getUtilisateur().getId()) {
+							System.out.println("Un utilisateur ne peut pas se rembourser lui-même");
+						}else {
+							try {
+								FenetreConfirmationRembourser f = new FenetreConfirmationRembourser(fenetre,Double.parseDouble(montant),p);
+								f.setVisible(true);
+								
+							} catch (NumberFormatException | RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+						}
 					} catch (RemoteException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					}
+					}					
 				}
 			}else {
 				System.out.println("Montant invalide, saisie incorrect");
 			}
 		}
 		
-		this.fenetre.dispose();
 	}
 	
 	private static boolean isValidFloat(String str) {

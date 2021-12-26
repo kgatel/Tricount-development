@@ -3,16 +3,30 @@ import java.util.ArrayList;
 
 public class TricountImpl implements Tricount {
 	
-	public ArrayList<Personne> participant;
-	public ArrayList<Depense> depenses;
+	private ArrayList<Personne> participant;
+	private ArrayList<Depense> depenses;
 	
 	public TricountImpl() throws RemoteException {
 		this.participant=new ArrayList<Personne>();
 		this.depenses=new ArrayList<Depense>();
 	}
 
-	
-	
+	public ArrayList<Personne> getParticipant() {
+		return participant;
+	}
+
+	public void setParticipant(ArrayList<Personne> participant) {
+		this.participant = participant;
+	}
+
+	public ArrayList<Depense> getDepenses() {
+		return depenses;
+	}
+
+	public void setDepenses(ArrayList<Depense> depenses) {
+		this.depenses = depenses;
+	}
+
 	public TricountImpl(Personne[] participants) throws RemoteException {
 		this.participant=new ArrayList<Personne>();
 		for (int i=0;i<participants.length;i++) {
@@ -33,10 +47,17 @@ public class TricountImpl implements Tricount {
 
 	@Override
 	public void AddDepense(int id, String com, int acheteurID, double val, int[] receveurID) throws RemoteException {
+		
+		//Division de la somme par le nombre de participant
+		double montant=val*100/receveurID.length;
+		//troncature 2chiffres après la virgule
+		int tmp=(int) (montant);
+		montant =(double) tmp/100;
+				
 		for (int i=0; i<receveurID.length; i++){
-			depenses.add(new DepenseImpl(id, com, acheteurID, val, receveurID[i]));
-			participant.get(receveurID[i]).setSolde(participant.get(receveurID[i]).getSolde()-val);
-			participant.get(acheteurID).setSolde(participant.get(acheteurID).getSolde()+val);
+			this.depenses.add(new DepenseImpl(id, com, acheteurID, val, receveurID[i]));
+			this.participant.get(receveurID[i]).setSolde(participant.get(receveurID[i]).getSolde()-montant);
+			this.participant.get(acheteurID).setSolde(participant.get(acheteurID).getSolde()+montant);
 		}
 	}
 

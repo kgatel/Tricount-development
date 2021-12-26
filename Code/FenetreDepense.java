@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.rmi.RemoteException;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -8,25 +9,27 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 public class FenetreDepense extends JFrame{
 		
-		public ArrayList<Personne> participant;
+		private FenetrePrincipale fenetrePrincipale; 
 		private JTextArea saisieMontant,saisieCommentaire;
 		private ArrayList<JCheckBox> listcheckbox;
 
-		public FenetreDepense(ArrayList<Personne> participant){
+		public FenetreDepense(FenetrePrincipale f) throws RemoteException{
 			super();
-			this.participant=participant;
+			this.fenetrePrincipale=f;
 			saisieMontant=null;
 			saisieCommentaire=null;
 			listcheckbox=new ArrayList<JCheckBox>();
 			build();//On initialise notre fenêtre
 		}
 		
-		public ArrayList<Personne> getParticipant() {
-			return participant;
+		
+		public FenetrePrincipale getFenetrePrincipale() {
+			return fenetrePrincipale;
 		}
 
-		public void setParticipant(ArrayList<Personne> participant) {
-			this.participant = participant;
+
+		public void setFenetrePrincipale(FenetrePrincipale fenetrePrincipale) {
+			this.fenetrePrincipale = fenetrePrincipale;
 		}
 
 		public JTextArea getSaisieMontant() {
@@ -54,7 +57,7 @@ public class FenetreDepense extends JFrame{
 		}
 		
 		
-		private void build(){
+		private void build() throws RemoteException{
 			setTitle(""); //On donne un titre à l'application
 			setSize(820,540); //On donne une taille à notre fenêtre
 			setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
@@ -64,7 +67,7 @@ public class FenetreDepense extends JFrame{
 		}
 		
 		
-		private JPanel buildContentPane() {
+		private JPanel buildContentPane() throws RemoteException {
 			JPanel panel = new JPanel();
 			panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 10));
 			panel.setLayout(new BorderLayout(10,10));
@@ -94,9 +97,9 @@ public class FenetreDepense extends JFrame{
 				CheckboxNom.setBorder(cadre);
 				
 								
-				for (int i=0;i<participant.size();i++) {
+				for (int i=0;i<this.fenetrePrincipale.getTricount().GetParticipants().size();i++) {
 					try {
-						listcheckbox.add(new JCheckBox("<html><h3>"+participant.get(i).getName()+"</h3></html>"));
+						listcheckbox.add(new JCheckBox("<html><h3>"+this.fenetrePrincipale.getTricount().GetParticipants().get(i).getName()+"</h3></html>"));
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -162,12 +165,17 @@ public class FenetreDepense extends JFrame{
 			EstCentre.add(this.saisieCommentaire,BorderLayout.CENTER);
 					
 				
+			JPanel EstSud = new JPanel();
 			
 			Boutton BoutonAjouterDepense = new Boutton(new AjouterDepenseAction2(this, "<html><h4>Ajouter la dépense</h4></html>"),new Color(246,209,216));
+			Boutton BoutonAnnulerDepense = new Boutton(new AnnulerAction(this),new Color(190,190,190));
+			EstSud.add(BoutonAjouterDepense,BorderLayout.CENTER);
+			EstSud.add(BoutonAnnulerDepense,BorderLayout.SOUTH);
+			
 				
 			Est.add(EstNord,BorderLayout.NORTH);
 			Est.add(EstCentre,BorderLayout.CENTER);
-			Est.add(BoutonAjouterDepense,BorderLayout.SOUTH);
+			Est.add(EstSud,BorderLayout.SOUTH);
 			
 			//Ajout Panel Principal
 			panel.setBackground(Color.GRAY);
