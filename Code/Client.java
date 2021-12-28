@@ -14,7 +14,10 @@ public class Client {
 	    Personne Pers;
 	    if (args.length==1) {
 		    Pers = new PersonneImpl(args[0]);
-	    } else {
+	    } else if(args.length==2){
+		    Pers = new PersonneImpl(args[0]);
+      		machine = args[1];
+      	} else{
 	    	Scanner sc = new Scanner(System.in);
 	    	System.out.println("Donnez votre nom ");
 	    	String prenom;

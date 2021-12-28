@@ -25,8 +25,10 @@ public class DemanderEquilibreAction extends AbstractAction {
 		this.fenetre.dispose();
 		
 		try {
-			FenetrePrincipale fenetrenew = new FenetrePrincipale(fenetre.getTricount(),fenetre.getUtilisateur());
-			fenetre = fenetrenew;
+			//this.fenetre.getTricount().GetEquilibre(this.fenetre.getTricount().GetParticipants());
+			this.fenetre.rebuild();
+			//FenetrePrincipale fenetrenew = new FenetrePrincipale(fenetre.getTricount(),fenetre.getUtilisateur());
+			//fenetre = fenetrenew;
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}

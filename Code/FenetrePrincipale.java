@@ -43,6 +43,15 @@ public class FenetrePrincipale extends JFrame{
 			setContentPane(buildContentPane());
 			
 		}
+		public void rebuild() throws RemoteException{
+			setTitle("Tricount : " + utilisateur.getName()); //On donne un titre à l'application
+			setSize(820,540); //On donne une taille à notre fenêtre
+			//setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
+			setResizable(false); //On interdit la redimensionnement de la fenêtre
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //On dit à l'application de se fermer lors du clic sur la croix
+			setContentPane(buildContentPane());
+			
+		}
 		
 		
 		private JPanel buildContentPane() throws RemoteException{
@@ -127,7 +136,8 @@ public class FenetrePrincipale extends JFrame{
 		System.out.println("Taille du tableau de dépense : "+this.tricount.GetDepense().size());
 		System.out.println("Taille du tableau de personne : "+this.tricount.GetParticipants().size());
 		int indice = tricount.GetDepense().size()-1;
-		while (indice>=0) {
+		int indice2 = 0;
+		while (indice2<3 && indice>=0) {
 			res+="<html>"+"<h3>"+trouverPersonne(tricount.GetDepense().get(indice).getAcheteurID()).getName()+" : ";
 			res+=tricount.GetDepense().get(indice).getValeur()+"€ "+"<i>"+tricount.GetDepense().get(indice).getCom()+"</i></h3><h5>&nbsp; &nbsp; ";
 			res+=trouverPersonne(tricount.GetDepense().get(indice).getReceveurID()).getName();
@@ -137,10 +147,11 @@ public class FenetrePrincipale extends JFrame{
 				res+=","+trouverPersonne(tricount.GetDepense().get(indice).getReceveurID()).getName();
 			}
 			res+="</h5>";
-			if (indice>0) {
+			if (indice2 != 2) {
 				res+="<br><br>";
 			}
 			indice--;
+			indice2++;
 		}
 		return res;
 	}
