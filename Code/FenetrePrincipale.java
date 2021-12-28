@@ -12,7 +12,7 @@ public class FenetrePrincipale extends JFrame{
 		private Personne utilisateur;
 		
 		public Personne getUtilisateur() {
-			return utilisateur;
+			return this.utilisateur;
 		}
 
 		public void setUtilisateur(Personne utilisateur) {
@@ -35,7 +35,7 @@ public class FenetrePrincipale extends JFrame{
 		}
 		
 		private void build() throws RemoteException{
-			setTitle("Tricount"); //On donne un titre à l'application
+			setTitle("Tricount : " + utilisateur.getName()); //On donne un titre à l'application
 			setSize(820,540); //On donne une taille à notre fenêtre
 			setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
 			setResizable(false); //On interdit la redimensionnement de la fenêtre

@@ -1,6 +1,8 @@
 import java.rmi.RemoteException;
+import java.io.Serializable;
 
-public class DepenseImpl implements Depense {
+
+public class DepenseImpl implements Depense, Serializable {
    private int id;
    private String com;
    private int acheteurID;

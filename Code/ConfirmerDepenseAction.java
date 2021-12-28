@@ -33,7 +33,7 @@ public class ConfirmerDepenseAction extends AbstractAction {
 				idTab[i]=this.fenetreConfirmation.getPersonneTab()[i].getId();
 			}
 			this.fenetreConfirmation.getFenetreDepense().getFenetrePrincipale().getTricount().AddDepense(idDepense,commentaire, idAcheteur, montant, idTab );
-			System.out.println("Dépense ajoutée");
+			System.out.println("Dépense ajoutée " + idAcheteur);
 		} catch (RemoteException e2) {
 			e2.printStackTrace();
 		}

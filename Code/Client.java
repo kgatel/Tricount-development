@@ -27,13 +27,13 @@ public class Client {
 	    	Registry registry = LocateRegistry.getRegistry(machine, port);
 	    	Tricount obj = (Tricount)registry.lookup("Tricountdesfamilles");
 	        stubPers = (Personne)UnicastRemoteObject.exportObject(Pers,0);
-	        System.out.println(obj.Connexion(Pers.getName()));
+	        System.out.println(obj.Connexion(Pers));
 			SwingUtilities.invokeLater(new Runnable(){
 				public void run(){
 					//On crée une nouvelle instance de notre SimpleFenetre
 					FenetrePrincipale fenetre = null;
 					try {
-						fenetre = new FenetrePrincipale(obj,stubPers);
+						fenetre = new FenetrePrincipale(obj,Pers);
 						fenetre.setVisible(true);
 					} catch (RemoteException e) {
 						// TODO Auto-generated catch block

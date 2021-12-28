@@ -36,11 +36,11 @@ public class TricountImpl implements Tricount {
 	}
 	
 	@Override
-	public void GetEquilibre(Personne[] pers) throws RemoteException {
-		for (int i=0; i<pers.length ; i++) {
-			pers[i].setId(participant.get(i).getId());
-			pers[i].setName(participant.get(i).getName());
-			pers[i].setSolde(participant.get(i).getSolde());
+	public void GetEquilibre(ArrayList<Personne> pers) throws RemoteException {
+		for (int i=0; i<pers.size() ; i++) {
+			pers.get(i).setId(participant.get(i).getId());
+			pers.get(i).setName(participant.get(i).getName());
+			pers.get(i).setSolde(participant.get(i).getSolde());
 			// pers[i]=participant[i]; voir si ça foncitonne juste avec cette ligne de commande 
 		}
 	}
@@ -59,17 +59,19 @@ public class TricountImpl implements Tricount {
 			this.participant.get(receveurID[i]).setSolde(participant.get(receveurID[i]).getSolde()-montant);
 			this.participant.get(acheteurID).setSolde(participant.get(acheteurID).getSolde()+montant);
 		}
+	System.out.println("Dépense ajoutée");
 	}
 
 	@Override
-	public boolean Connexion(String prenom) throws RemoteException {
+	public boolean Connexion(Personne pers) throws RemoteException {
 		if (participant.size() < 6) {
-			System.out.println("Une Nouvelle Personne vient de se connecter: " + prenom);
+			System.out.println("Une Nouvelle Personne vient de se connecter: " + pers.getName());
 			int i = participant.size();
-			participant.add(new PersonneImpl(prenom,i));
+			participant.add(new PersonneImpl(pers.getName(),i));
+			pers.setId(i);
 			return true;
 		} else {
-			System.out.println("Connection refusée de: " + prenom);
+			System.out.println("Connection refusée de: " + pers.getName());
 			return false;
 		}
 	}

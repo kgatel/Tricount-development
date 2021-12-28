@@ -24,19 +24,24 @@ public class DemanderEquilibreAction extends AbstractAction {
 		//pour rafraichir la page je ne sais pas faire autrement que fermer puis réouvrir un nouveau tricount avec la misé à jour des équilibres
 		this.fenetre.dispose();
 		
-		Personne[] participantTab = new Personne[participant.size()];
-				
-		for (int i=0;i<participant.size();i++) {
-			participantTab[i] = participant.get(i);
+		try {
+			FenetrePrincipale fenetrenew = new FenetrePrincipale(fenetre.getTricount(),fenetre.getUtilisateur());
+			fenetre = fenetrenew;
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
 		}
 		
-		try {
-			fenetre = new FenetrePrincipale(new TricountImpl(participantTab),fenetre.getUtilisateur());
+		
+	/*	try {
+			fenetre.getTricount().GetEquilibre(fenetre.getTricount().GetParticipants());
+			for (int i=0; i<fenetre.getTricount().GetParticipants().size() ; i++) {
+				System.out.println(fenetre.getTricount().GetParticipants().get(i).toText());
+			}
 			System.out.println("\n\nMise à jour des équilibres faite");
 		} catch (RemoteException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
+		} */
 		fenetre.setVisible(true);//On la rend visible
 		
 	} 
