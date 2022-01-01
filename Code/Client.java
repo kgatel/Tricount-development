@@ -28,7 +28,7 @@ public class Client {
 	    Personne stubPers;
 	    try {
 	    	Registry registry = LocateRegistry.getRegistry(machine, port);
-	    	Tricount obj = (Tricount)registry.lookup("Tricountdesfamilles");
+	    	Tricount obj = (Tricount)registry.lookup("Tricount");
 	        stubPers = (Personne)UnicastRemoteObject.exportObject(Pers,0);
 	        System.out.println(obj.Connexion(Pers));
 			SwingUtilities.invokeLater(new Runnable(){

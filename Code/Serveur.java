@@ -15,11 +15,11 @@ public class Serveur {
     try {
       Tricount stub = (Tricount)UnicastRemoteObject.exportObject(new TricountImpl(), 0);
       Registry registry = LocateRegistry.getRegistry(port);
-      if(!Arrays.asList(registry.list()).contains("Tricountdesfamilles"))
-          registry.bind("Tricountdesfamilles", stub);
+      if(!Arrays.asList(registry.list()).contains("Tricount"))
+          registry.bind("Tricount", stub);
       else
-          registry.rebind("Tricountdesfamilles", stub);
-      System.out.println("Serveur lancé sous le nom Tricountdesfamilles");
+          registry.rebind("Tricount", stub);
+      System.out.println("Serveur lancé sous le nom Tricount");
       for (
           final Enumeration< NetworkInterface > interfaces =
               NetworkInterface.getNetworkInterfaces( );
