@@ -45,7 +45,6 @@ public class ConfirmerDepenseAction extends AbstractAction {
 				try {
 					listPersonne.add(fenetreConfirmation.getFenetreDepense().getFenetrePrincipale().getTricount().GetParticipants().get(i));
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 			}

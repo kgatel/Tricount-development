@@ -25,25 +25,11 @@ public class DemanderEquilibreAction extends AbstractAction {
 		this.fenetre.dispose();
 		
 		try {
-			//this.fenetre.getTricount().GetEquilibre(this.fenetre.getTricount().GetParticipants());
 			this.fenetre.rebuild();
-			//FenetrePrincipale fenetrenew = new FenetrePrincipale(fenetre.getTricount(),fenetre.getUtilisateur());
-			//fenetre = fenetrenew;
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}
 		
-		
-	/*	try {
-			fenetre.getTricount().GetEquilibre(fenetre.getTricount().GetParticipants());
-			for (int i=0; i<fenetre.getTricount().GetParticipants().size() ; i++) {
-				System.out.println(fenetre.getTricount().GetParticipants().get(i).toText());
-			}
-			System.out.println("\n\nMise à jour des équilibres faite");
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} */
 		fenetre.setVisible(true);//On la rend visible
 		
 	} 

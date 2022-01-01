@@ -18,7 +18,6 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 			super();
 			this.fenetrePrincipale=fenetrePrincipale;
 			saisieMontant=null;
-			//this.listcheckbox = new ArrayList<JCheckBox>();
 			String[] prenoms = new String[this.fenetrePrincipale.getTricount().GetParticipants().size()];
 			for (int i=0;i<prenoms.length;i++) {
 				prenoms[i]=this.fenetrePrincipale.getTricount().GetParticipants().get(i).getName();
@@ -26,7 +25,6 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 			combobox = new JComboBox(prenoms);
 			combobox.getEditor().getEditorComponent().setBackground(Color.white);
 			combobox.setBounds(10, 10, 250, 26);
-			//combobox.setVisible(true);
 	        combobox.setEditable(true);
 			combobox.addItemListener(this);
 			
@@ -96,21 +94,7 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 				CheckboxNom.setBackground(Color.white);
 				CheckboxNom.setLayout(new BoxLayout(CheckboxNom, BoxLayout.Y_AXIS));		
 				CheckboxNom.setBorder(cadre);
-				CheckboxNom.add(combobox);
-								
-				/*for (int i=0;i<participant.size();i++) {
-					try {
-						listcheckbox.add(new JCheckBox("<html><h3>"+participant.get(i).getName()+"</h3></html>"));
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					
-					listcheckbox.get(i).setSelected(false);
-					CheckboxNom.add(listcheckbox.get(i));
-				}*/
-				
-				
-
+				CheckboxNom.add(combobox);			
 				
 			Centre.add(TitreCentre,BorderLayout.NORTH);
 			Centre.add(CheckboxNom,BorderLayout.CENTER);
@@ -145,7 +129,6 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 			Euro.setHorizontalAlignment(SwingConstants.CENTER);
 			
 				
-			//EstCentre.add(texte,BorderLayout.CENTER);
 			EstNord.add(Euro,BorderLayout.EAST);
 					
 			JPanel EstSud = new JPanel();
@@ -156,7 +139,6 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 			EstSud.add(BoutonAjouterRembourser,BorderLayout.NORTH);
 			EstSud.add(BoutonAnnulerRembourser,BorderLayout.CENTER);
 			EstNord.setBackground(Color.WHITE);
-			//EstNord.setLayout(new BorderLayout(10,10));
 			EstNord.setBorder(cadre);
 			
 			Est.add(EstNord,BorderLayout.CENTER);
@@ -173,8 +155,6 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 		}
 
 		@Override
-		public void itemStateChanged(ItemEvent arg0) {
-			// TODO Auto-generated method stub
-			
+		public void itemStateChanged(ItemEvent arg0) {			
 		}
 	}

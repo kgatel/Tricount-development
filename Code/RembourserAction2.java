@@ -24,11 +24,6 @@ public class RembourserAction2 extends AbstractAction {
 		montant = montant.substring(3);
 		
 		int nb_cases_cochees=0;
-		/*for (int i=0;i<fenetre.getListcheckbox().size();i++) {
-			if (fenetre.getListcheckbox().get(i).isSelected()) {
-				nb_cases_cochees++;
-			}
-		}*/
 		nb_cases_cochees=1;
 		
 		if (nb_cases_cochees!=1) {
@@ -44,7 +39,6 @@ public class RembourserAction2 extends AbstractAction {
 					try {
 						p = this.fenetre.getFenetrePrincipale().getTricount().GetParticipants().get(indiceP);
 					} catch (RemoteException e2) {
-						// TODO Auto-generated catch block
 						e2.printStackTrace();
 					}
 					try {
@@ -56,12 +50,10 @@ public class RembourserAction2 extends AbstractAction {
 								f.setVisible(true);
 								
 							} catch (NumberFormatException | RemoteException e1) {
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
 						}
 					} catch (RemoteException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}					
 				}

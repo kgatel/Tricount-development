@@ -19,7 +19,6 @@ public class AjouterDepenseAction extends AbstractAction {
 		try {
 			fenetredep = new FenetreDepense(this.fenetre);
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		fenetredep.setVisible(true);//On la rend visible

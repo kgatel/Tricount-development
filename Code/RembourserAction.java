@@ -17,7 +17,6 @@ public class RembourserAction extends AbstractAction {
 		try {
 			fenetreremb = new FenetreRembourser(this.fenetre);
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		fenetreremb.setVisible(true);//On la rend visible

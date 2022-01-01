@@ -39,7 +39,6 @@ public class Client {
 						fenetre = new FenetrePrincipale(obj,Pers);
 						fenetre.setVisible(true);
 					} catch (RemoteException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}

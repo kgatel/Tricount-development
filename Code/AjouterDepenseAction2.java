@@ -50,7 +50,6 @@ public class AjouterDepenseAction2 extends AbstractAction {
 							try {
 								listPersonne.add(fenetre.getFenetrePrincipale().getTricount().GetParticipants().get(i));
 							} catch (RemoteException e1) {
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
 						}
@@ -68,7 +67,6 @@ public class AjouterDepenseAction2 extends AbstractAction {
 								}
 							}
 						} catch (RemoteException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 						Personne[] participantTab = new Personne[compteur];
@@ -81,7 +79,6 @@ public class AjouterDepenseAction2 extends AbstractAction {
 								}
 							}
 						} catch (RemoteException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 						
@@ -92,7 +89,6 @@ public class AjouterDepenseAction2 extends AbstractAction {
 							f.setVisible(true);
 							
 						} catch (NumberFormatException | RemoteException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 					}
