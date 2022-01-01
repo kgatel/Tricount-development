@@ -80,7 +80,7 @@ public class FenetrePrincipale extends JFrame{
 				
 			Boutton BoutonDemanderEquilibre = new Boutton(new DemanderEquilibreAction(this.tricount.GetParticipants(),this, "<html><h4>Demander Equilibre</h4></html>"),new Color(253,252,150));
 			
-			JLabel Depenses = new JLabel(affichage3Depenses());
+			JLabel Depenses = new JLabel(this.tricount.affichage3Depenses());
 			Depenses.setBackground(new Color(121,210,230));
 			Depenses.setBorder(cadre);
 			
@@ -103,7 +103,7 @@ public class FenetrePrincipale extends JFrame{
 				TitreEst.setBorder(cadre);
 				TitreEst.setHorizontalAlignment(SwingConstants.CENTER);
 				
-				JLabel equilibre = new JLabel(affichageEquilibre());
+				JLabel equilibre = new JLabel(this.tricount.affichageEquilibre());
 				
 				equilibre.setBackground(new Color(121,210,230));
 				equilibre.setBorder(cadre);
@@ -130,54 +130,5 @@ public class FenetrePrincipale extends JFrame{
 			
 			return panel;
 		}	
-		
-	public String affichage3Depenses() throws RemoteException {
-		String res="";
-		System.out.println("Taille du tableau de dépense : "+this.tricount.GetDepense().size());
-		System.out.println("Taille du tableau de personne : "+this.tricount.GetParticipants().size());
-		int indice = tricount.GetDepense().size()-1;
-		int indice2 = 0;
-		while (indice2<3 && indice>=0) {
-			res+="<html>"+"<h3>"+trouverPersonne(tricount.GetDepense().get(indice).getAcheteurID()).getName()+" : ";
-			res+=tricount.GetDepense().get(indice).getValeur()+"€ "+"<i>"+tricount.GetDepense().get(indice).getCom()+"</i></h3><h5>&nbsp; &nbsp; ";
-			res+=trouverPersonne(tricount.GetDepense().get(indice).getReceveurID()).getName();
-			int id=tricount.GetDepense().get(indice).getId();
-			while ((indice-1>=0)&&(tricount.GetDepense().get(indice-1).getId()==id)){
-				indice--;
-				res+=","+trouverPersonne(tricount.GetDepense().get(indice).getReceveurID()).getName();
-			}
-			res+="</h5>";
-			if (indice2 != 2) {
-				res+="<br><br>";
-			}
-			indice--;
-			indice2++;
-		}
-		return res;
-	}
-	
-	private String affichageEquilibre() throws RemoteException {
-		String res="<html>";
-		int indice = 0;
-		while (indice<this.tricount.GetParticipants().size()) {
-			res+="<h3>"+this.tricount.GetParticipants().get(indice).getName()+" : "+this.tricount.GetParticipants().get(indice).getSolde()+"</h3>";
-			indice++;
-		}
-		res+="</html>";
-		return res;
-	}
-	
-	private Personne trouverPersonne (int id) throws RemoteException {
-		Personne res = null;
-		for (int i=0;i<this.tricount.GetParticipants().size();i++) {
-			if (id==this.tricount.GetParticipants().get(i).getId()) {
-				res=this.tricount.GetParticipants().get(i);
-			}
-		}
-		return res;
-	}
-	
-		
-		
 		
 	}

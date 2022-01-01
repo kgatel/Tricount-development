@@ -20,31 +20,27 @@ public class Serveur {
       else
           registry.rebind("Tricount", stub);
       System.out.println("Serveur lancé sous le nom Tricount");
+
+      //affichage de l'IP Serveur
       for (
           final Enumeration< NetworkInterface > interfaces =
-              NetworkInterface.getNetworkInterfaces( );
-          interfaces.hasMoreElements( );
-      )
-      {
-          final NetworkInterface cur = interfaces.nextElement( );
+              NetworkInterface.getNetworkInterfaces();
+          interfaces.hasMoreElements();
+      ){
+          final NetworkInterface cur = interfaces.nextElement();
 
-          if ( cur.isLoopback( ) )
-          {
+          if ( cur.isLoopback() ){
               continue;
           }
 
-          for ( final InterfaceAddress addr : cur.getInterfaceAddresses( ) )
-          {
-              final InetAddress inet_addr = addr.getAddress( );
-
-              if ( !( inet_addr instanceof Inet4Address ) )
-              {
+          for ( final InterfaceAddress addr : cur.getInterfaceAddresses() ){
+              final InetAddress inet_addr = addr.getAddress();
+              if ( !( inet_addr instanceof Inet4Address ) ){
                   continue;
               }
 
-              System.out.println(
-                  "Address IP: " + inet_addr.getHostAddress( )
-              );
+              System.out.println("Address IP: " + inet_addr.getHostAddress());
+              System.out.println("Port: " + port);
           }
       }
 

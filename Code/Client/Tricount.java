@@ -8,4 +8,7 @@ public interface Tricount extends Remote {
 	public boolean Connexion (Personne pers) throws RemoteException;
 	public ArrayList<Personne> GetParticipants() throws RemoteException;
 	public ArrayList<Depense> GetDepense() throws RemoteException;
+	public Personne trouverPersonne (int id) throws RemoteException;
+	public String affichage3Depenses() throws RemoteException;
+	public String affichageEquilibre() throws RemoteException;
 }

@@ -11,32 +11,44 @@ public class Client {
 	public static void main(String args[]) throws RemoteException {
 		String machine = "localhost";
 	    int port = 1099;
-	    Personne Pers;
+	    Personne pers;
+	    boolean connexion;
 	    if (args.length==1) {
-		    Pers = new PersonneImpl(args[0]);
+		    pers = new PersonneImpl(args[0]);
 	    } else if(args.length==2){
-		    Pers = new PersonneImpl(args[0]);
+		    pers = new PersonneImpl(args[0]);
       		machine = args[1];
-      	} else{
+      	} else if(args.length==3){
+		    pers = new PersonneImpl(args[0]);
+      		machine = args[1];
+      		port = Integer.parseInt(args[2]);
+      	}else{
 	    	Scanner sc = new Scanner(System.in);
 	    	System.out.println("Donnez votre nom ");
 	    	String prenom;
 	    	prenom = sc.nextLine();
 	    	sc.close();
-		    Pers = new PersonneImpl(prenom);
+		    pers = new PersonneImpl(prenom);
 	    }
 	    Personne stubPers;
 	    try {
 	    	Registry registry = LocateRegistry.getRegistry(machine, port);
 	    	Tricount obj = (Tricount)registry.lookup("Tricount");
-	        stubPers = (Personne)UnicastRemoteObject.exportObject(Pers,0);
-	        System.out.println(obj.Connexion(Pers));
+	        stubPers = (Personne)UnicastRemoteObject.exportObject(pers,0);
+	        connexion = obj.Connexion(stubPers);
+	        UnicastRemoteObject.unexportObject(pers, true);
+	        if (connexion == true) {
+	        	System.out.println("Connexion établie");
+	        }else {
+	        	System.out.println("Erreur de Connexion");
+	        }
+	        
 			SwingUtilities.invokeLater(new Runnable(){
 				public void run(){
 					//On crée une nouvelle instance de notre SimpleFenetre
 					FenetrePrincipale fenetre = null;
 					try {
-						fenetre = new FenetrePrincipale(obj,Pers);
+						fenetre = new FenetrePrincipale(obj,pers);
 						fenetre.setVisible(true);
 					} catch (RemoteException e) {
 						e.printStackTrace();
