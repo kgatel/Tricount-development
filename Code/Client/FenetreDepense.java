@@ -1,3 +1,5 @@
+
+
 import java.awt.*;
 import java.rmi.RemoteException;
 
@@ -9,11 +11,11 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 public class FenetreDepense extends JFrame{
 		
-		private FenetrePrincipale fenetrePrincipale; 
+		private IHM fenetrePrincipale; 
 		private JTextArea saisieMontant,saisieCommentaire;
 		private ArrayList<JCheckBox> listcheckbox;
 
-		public FenetreDepense(FenetrePrincipale f) throws RemoteException{
+		public FenetreDepense(IHM f) throws RemoteException{
 			super();
 			this.fenetrePrincipale=f;
 			saisieMontant=null;
@@ -23,12 +25,12 @@ public class FenetreDepense extends JFrame{
 		}
 		
 		
-		public FenetrePrincipale getFenetrePrincipale() {
+		public IHM getFenetrePrincipale() {
 			return fenetrePrincipale;
 		}
 
 
-		public void setFenetrePrincipale(FenetrePrincipale fenetrePrincipale) {
+		public void setFenetrePrincipale(IHM fenetrePrincipale) {
 			this.fenetrePrincipale = fenetrePrincipale;
 		}
 
@@ -58,7 +60,7 @@ public class FenetreDepense extends JFrame{
 		
 		
 		private void build() throws RemoteException{
-			setTitle(""); //On donne un titre à l'application
+			setTitle(this.fenetrePrincipale.getUtilisateur().getName()); //On donne un titre à l'application
 			setSize(820,540); //On donne une taille à notre fenêtre
 			setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
 			setResizable(false); //On interdit la redimensionnement de la fenêtre
@@ -160,7 +162,6 @@ public class FenetreDepense extends JFrame{
 				saisieCommentaire.setText("-> ");
 				
 				
-			//EstCentre.add(texte,BorderLayout.CENTER);
 			EstNord.add(Euro,BorderLayout.EAST);
 			EstCentre.add(this.saisieCommentaire,BorderLayout.CENTER);
 					

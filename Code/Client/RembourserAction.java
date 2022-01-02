@@ -1,12 +1,14 @@
+
+
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 
 import javax.swing.AbstractAction;
 
 public class RembourserAction extends AbstractAction {
-	private FenetrePrincipale fenetre;
+	private IHM fenetre;
 	
-	public RembourserAction(FenetrePrincipale fenetre, String texte){
+	public RembourserAction(IHM fenetre, String texte){
 		super(texte);
 		this.fenetre = fenetre;
 	}

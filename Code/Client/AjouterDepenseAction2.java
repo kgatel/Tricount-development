@@ -1,3 +1,5 @@
+
+
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -18,8 +20,6 @@ public class AjouterDepenseAction2 extends AbstractAction {
 	
 	public void actionPerformed(ActionEvent e) { 
 		//Action lors du clic sur le bouton calculer
-		
-		//Ajouter au serveur la dépense avec les personnes cochées puis fermez la fenêtre si la dépense est valide
 		
 		System.out.println("\n\nAjouter dépense : ");
 		//Commentaire

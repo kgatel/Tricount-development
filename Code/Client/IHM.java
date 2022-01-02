@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.rmi.RemoteException;
 import javax.swing.*;
@@ -5,7 +6,7 @@ import javax.swing.border.*;
 import java.util.ArrayList;
 
 
-public class FenetrePrincipale extends JFrame{
+public class IHM extends JFrame{
 		
 		//private ArrayList<Personne> participant;
 		private Tricount tricount;
@@ -27,7 +28,7 @@ public class FenetrePrincipale extends JFrame{
 			this.tricount = tricount;
 		}
 
-		public FenetrePrincipale(Tricount tri,Personne utilisateur) throws RemoteException{
+		public IHM(Tricount tri,Personne utilisateur) throws RemoteException{
 			super();
 			this.tricount=tri;
 			this.utilisateur=utilisateur;
@@ -78,7 +79,7 @@ public class FenetrePrincipale extends JFrame{
 				TitreCentre.setHorizontalAlignment(SwingConstants.CENTER);
 			
 				
-			Boutton BoutonDemanderEquilibre = new Boutton(new DemanderEquilibreAction(this.tricount.GetParticipants(),this, "<html><h4>Demander Equilibre</h4></html>"),new Color(253,252,150));
+			Boutton BoutonDemanderEquilibre = new Boutton(new Actualiser(this.tricount.GetParticipants(),this, "<html><h4>Actualiser</h4></html>"),new Color(253,252,150));
 			
 			JLabel Depenses = new JLabel(this.tricount.affichage3Depenses());
 			Depenses.setBackground(new Color(121,210,230));

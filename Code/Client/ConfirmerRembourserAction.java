@@ -1,4 +1,5 @@
 
+
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 
@@ -15,9 +16,6 @@ public class ConfirmerRembourserAction extends AbstractAction {
 	
 	public void actionPerformed(ActionEvent e) { 
 		//Action lors du clic sur le bouton calculer
-		
-		//Ajouter au serveur la dépense avec les personnes cochées puis fermez la fenêtre si la dépense est valide
-		
 		
 		this.fenetreConfirmation.dispose();
 		

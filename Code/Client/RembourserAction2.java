@@ -1,3 +1,5 @@
+
+
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 
@@ -14,8 +16,6 @@ public class RembourserAction2 extends AbstractAction {
 	
 	public void actionPerformed(ActionEvent e) { 
 		//Action lors du clic sur le bouton calculer
-		
-		//Ajouter la dépense inverse au serveur pour le stockage puis fermez la fenêtre si le montant est valide
 		
 		System.out.println("\n\nRemboursement : ");
 		

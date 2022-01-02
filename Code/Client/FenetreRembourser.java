@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
@@ -5,16 +6,15 @@ import java.rmi.RemoteException;
 
 import javax.swing.*;
 import javax.swing.border.*;
-import java.util.ArrayList;
 
 
 public class FenetreRembourser extends JFrame implements ItemListener{
 	
-		private FenetrePrincipale fenetrePrincipale; 
+		private IHM fenetrePrincipale; 
 		private JTextArea saisieMontant;
 		static JComboBox combobox;
 
-		public FenetreRembourser(FenetrePrincipale fenetrePrincipale) throws RemoteException{
+		public FenetreRembourser(IHM fenetrePrincipale) throws RemoteException{
 			super();
 			this.fenetrePrincipale=fenetrePrincipale;
 			saisieMontant=null;
@@ -31,11 +31,11 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 			build();//On initialise notre fenêtre
 		}
 		
-		public FenetrePrincipale getFenetrePrincipale() {
+		public IHM getFenetrePrincipale() {
 			return fenetrePrincipale;
 		}
 
-		public void setFenetrePrincipale(FenetrePrincipale fenetrePrincipale) {
+		public void setFenetrePrincipale(IHM fenetrePrincipale) {
 			this.fenetrePrincipale = fenetrePrincipale;
 		}
 
@@ -57,7 +57,8 @@ public class FenetreRembourser extends JFrame implements ItemListener{
 		}
 
 		
-		private void build(){
+		private void build() throws RemoteException {
+			setTitle(this.fenetrePrincipale.getUtilisateur().getName()); //On donne un titre à l'application
 			setSize(540,340); //On donne une taille à notre fenêtre
 			setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
 			setResizable(false); //On interdit la redimensionnement de la fenêtre

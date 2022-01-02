@@ -1,8 +1,9 @@
+
+
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.SwingUtilities;
 
@@ -46,9 +47,9 @@ public class Client {
 			SwingUtilities.invokeLater(new Runnable(){
 				public void run(){
 					//On crée une nouvelle instance de notre SimpleFenetre
-					FenetrePrincipale fenetre = null;
+					IHM fenetre = null;
 					try {
-						fenetre = new FenetrePrincipale(obj,pers);
+						fenetre = new IHM(obj,pers);
 						fenetre.setVisible(true);
 					} catch (RemoteException e) {
 						e.printStackTrace();

@@ -1,3 +1,5 @@
+
+
 import java.awt.event.ActionEvent;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -5,9 +7,9 @@ import javax.swing.AbstractAction;
 
 public class AjouterDepenseAction extends AbstractAction {
 	
-	private FenetrePrincipale fenetre;
+	private IHM fenetre;
 	
-	public AjouterDepenseAction(FenetrePrincipale fenetre, String texte){
+	public AjouterDepenseAction(IHM fenetre, String texte){
 		super(texte);
 		this.fenetre = fenetre;
 	}
