@@ -55,7 +55,7 @@ numbers=left}
 	\vspace*{\stretch{1}}	
 	\textsc{{\LARGE Institut national des sciences appliquées de Rouen} \\ 			\vspace{6mm} {\Large INSA de Rouen}} \\
 	\vspace{5mm}
-	\includegraphics[width=0.4\textwidth]{./Images/insa}\\[1.0 cm]
+	\includegraphics[width=0.4\textwidth]{./Images_pooa/insa}\\[1.0 cm]
 
 	\textsc{\Large Projet POOA GM4}\\[0.6cm]
 
@@ -64,7 +64,7 @@ numbers=left}
 	{ \Huge \bfseries Réalisation d'un Tricount en java}\\[0.2cm]
 	\HRule \\[0.75cm]
 
-	\includegraphics[width=0.7\textwidth]{./Images/Tricount}\\[0.9 cm]
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Tricount}\\[0.9 cm]
 
 	% Author and supervisor
 	\begin{minipage}{0.4\textwidth}
@@ -90,7 +90,7 @@ numbers=left}
 	\vspace*{\stretch{1}}
 
 	\vfill
-	{\large 14 décembre 2021}
+	{\large 4 janvier 2022}
 \end{center}
 \end{titlepage}
 
@@ -99,7 +99,6 @@ numbers=left}
 
 \renewcommand{\chaptername}{}
 \chapter*{Introduction}
-\addcontentsline{toc}{chapter}{Introduction}
 
 Tricount est une application qui permet d'organiser les dépenses de groupe. Ses utilisations sont multiples, elle permet notamment la répartition équitable des dépenses du groupe et le fait de pouvoir rembourser facilement quelqu'un si besoin. Elle peut également faire l’objet d’un récapitulatif de compte.\\
 
@@ -118,7 +117,7 @@ Dans un premier temps, nous allons voir différents diagrammes afin de clarifier
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Use-Case}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Use-Case}
 	\caption{Diagramme de cas d'utilisation}
 \end{figure}\vspace{0.2cm}
 
@@ -129,13 +128,13 @@ Dans ce diagramme on distingue les deux cas suivants : l’administrateur et l�
 
 Le diagramme de séquence représentant l’option “Se connecter” pour l’utilisateur est représenté sur chacun des trois diagrammes de séquence suivants.\\
 
-Le diagramme de séquence de l’option “Demander équilibre” est le suivant :\\
+Le diagramme de séquence de l’option “Demander équilibre (Actualiser)” est le suivant :\\
 
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Sequence_1}
-	\caption{Diagramme de séquence "Demander Equilibre"}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Sequence_1}
+	\caption{Diagramme de séquence "Demander Equilibre (Actualiser)"}
 \end{figure}\vspace{0.2cm}
 
 Afin de pouvoir “Demander équilibre” au serveur, nous devons nous assurer que l’utilisateur est connecté au serveur. Dans le cas où l’utilisateur est bien connecté, un message de confirmation est envoyé à l’utilisateur et la requête peut commencer à être traitée, dans le cas contraire un message d’erreur est envoyé et la requête est renvoyée. Si l’utilisateur est correctement connecté au Serveur alors le Serveur envoie la liste des utilisateurs de l’application à l’utilisateur en les informant s’ils sont “en avance” ou “en retard” par rapport aux autres utilisateurs selon une somme d’argent indiquée.\\
@@ -145,7 +144,7 @@ Le diagramme de séquence de l’option “Ajouter dépense” est le suivant :\
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Sequence_2}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Sequence_2}
 	\caption{Diagramme de séquence "Ajouter dépense"}
 \end{figure}\vspace{0.2cm}
 
@@ -155,7 +154,7 @@ Le diagramme de séquence de l’option “Rembourser” est le suivant :\\
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Sequence_3}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Sequence_3}
 	\caption{Diagramme de séquence "Rembourser"}
 \end{figure}\vspace{0.2cm}
 
@@ -167,11 +166,11 @@ Nous avons réalisé le diagramme de modèle du domaine suivant :\\
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Modele}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Modele}
 	\caption{Diagramme de modèle du domaine}
 \end{figure}\vspace{0.2cm}
 
-Comme on peut le voir ci-dessus on peut distinguer 2 classes Personnes et Dépenses qui sont liées entre elles. Commençons d’abord par nous intéresser à chacune d’entre elles :\\
+Comme on peut le voir ci-dessus on peut distinguer 2 classes \textit{Personne} et \textit{Dépense} qui sont liées entre elles. Commençons d’abord par nous intéresser à chacune d’entre elles :\\
 
 \begin{itemize}[label=\textbullet]
 	\item \emph{Personne} :
@@ -188,7 +187,7 @@ Il est nécessaire de préciser que dans notre cas nous avons décidé de consid
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Maquette}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Maquette}
 	\caption{Maquette de l'application}
 \end{figure}\vspace{0.2cm}
 
@@ -198,44 +197,44 @@ Elle peut être expliquée par le diagramme de navigation suivant.
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Navigation}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Navigation}
 	\caption{Diagramme de navigation}
 \end{figure}\vspace{0.2cm}
 
 L’utilisateur ouvre le tricount et se connecte, il arrive alors sur la fenêtre principale : le “menu principal”. Il peut donc entrer une dépense en cliquant sur le bouton “Ajouter une dépense”. Il arrive ensuite sur la fenêtre d’ajout d’une dépense et peut entrer le montant de sa dépense et sélectionner les personnes qui participent à cet achat (il peut se sélectionner lui-même si il paie également). Il clique ensuite sur “Ajouter”. Si sa saisie est correcte la dépense est prise en compte et il retourne sur la fenêtre principale, sinon un message d’erreur apparaît et il doit refaire sa saisie.
 Le principe est le même pour le remboursement.
-Ensuite, si l’utilisateur sélectionne le bouton “demander équilibre” l’affichage s’actualise avec les dernières dépenses.
+Ensuite, si l’utilisateur sélectionne le bouton “Actualiser” l’affichage s’actualise avec les dernières dépenses (et les derniers participants s'ayant connectés entre temps).
 Enfin, pour quitter le tricount il suffit de cliquer sur la croix rouge en haut à gauche de la fenêtre principale.\\
 
-Les deux fonctions principales sont:\\
+La fonction principale est :\\
 
 \begin{itemize}[label=\textbullet]
-	\item \textit{public Int GetEquilibre(Personne Pers) throws RemoteException;}
-Demande au serveur l’équilibre d’une personne. Elle la calcul à l’aide d’un tableau de dépense. Elle somme les achats et soustrait les dues.
 	\item \textit{public void AddDepense(Int id, String Com, Personne acheteur, Int Val, Personne receveur) throws RemoteException;}
 Elle permet d’ajouter une dépense et de rembourser ( en faisant une dépense inverse). Les dépenses sont stockées dans un tableau comme vu dans les premiers TDs. Une dépense à un client et un acheteur. Lorsque une dépense est crée elle sera automatiquement stockée plusieurs fois (le nombre de participant à la dépense).
 \end{itemize}\vspace{0.5cm}
 
-Pour notre Programme nous aurons deux utilisateurs :
-L’administrateur qui lance et ferme le serveur.
+Pour notre Programme nous aurons deux utilisateurs :\\
 
-Et les utilisateurs qui se connectent dans un premier temps. Puis ils ont 3 possibilitées:
-Actualiser les soldes (l’équilibre de chaque personne).
-Rembourser un autre utilisateur.
-Ajouter une dépense.
-
-Pour l’instant il y a peu de contraintes étant donné que nous sommes dans la phase de conception. Nous allons surement utiliser le RMI pour faire l'implémentation. 
+\begin{itemize}[label=\textbullet]
+\item L’administrateur qui lance et ferme le serveur.\\
+\item Et les utilisateurs qui se connectent dans un premier temps. Puis ils ont 3 possibilitées:\\
+	\begin{itemize}
+	\item Actualiser les soldes (l’équilibre de chaque personne)\\
+	\item Rembourser un autre utilisateur.\\
+	\item Ajouter une dépense.\\
+	\end{itemize}
+\end{itemize}
 
 
 \chapter{UML Conception}
 
 \section{Interaction}
 
-On retrouve dans un premier temps le diagramme d'interaction pour la requête "Demander Equilibre" :
+On retrouve dans un premier temps le diagramme d'interaction pour la requête "Ajouter dépense" :
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Interaction_AjouterDepense}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Interaction_AjouterDepense}
 	\caption{Diagramme d'interaction "Ajouter dépense"}
 \end{figure}\vspace{0.2cm}
 
@@ -244,19 +243,19 @@ Une fois le message de confirmation envoyé, l'IHM est actualisée (la fenêtre 
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Interaction_DemanderEquilibre}
-	\caption{Diagramme d'interaction "Demander Equilibre"}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Interaction_DemanderEquilibre}
+	\caption{Diagramme d'interaction "Demander Equilibre (Actualiser)"}
 \end{figure}\vspace{0.2cm}
 
 Pour le calcul d'équilibre le principe est similaire au cas précédent. La connexion est vérifiée dans un premier temps et une requête est envoyée par le Client. Ici aucune vérification de saisie n'est nécessaire car l'utilisateur n'a rien à entrer (il clique sur un bouton). Le calcul est effectué côté serveur, encore une fois le détail de calcul est rédigé dans la section Clarification. Une fois le calcul effectué, le résultat est envoyé au TricountClient. Ce dernier met à jour son IHM afin de montrer à l'utilisateur les nouveaux chiffres. \\
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Interaction_Rembourser}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Interaction_Rembourser}
 	\caption{Diagramme d'interaction "Rembourser"}
 \end{figure}\vspace{0.2cm}
 
-Pour le remboursement on effectue la même chose que pour l'ajoute de dépenses. Encore une fois vous trouverez plus d'informations dans la section Clarification. 
+Pour le remboursement on effectue la même chose que pour l'ajout de dépenses. Encore une fois vous trouverez plus d'informations dans la section Clarification. 
 
 \section{Classes}
 
@@ -264,7 +263,7 @@ Afin de séparer le Serveur et le Client nous avons décidé de faire un diagram
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Diagramme_de_classe_Serveur}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Diagramme_de_classe_Serveur}
 	\caption{Diagramme de classe coté Serveur}
 \end{figure}\vspace{0.2cm}
 
@@ -282,11 +281,21 @@ On remarque bien sur le diagramme que les classes \textit{Depense} et \textit{Pe
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Diagramme_de_classe_Client}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Diagramme_de_classe_Client}
 	\caption{Diagramme de classe coté Client}
 \end{figure}\vspace{0.2cm}
 
-Du côté Client c’est assez similaire. On retrouve deux classes \textit{Personne} et \textit{IHM} qui dépendent de la classe main \textit{TricountClient}. Cette classe \textit{TricountClient} va en réalité chercher à se connecter un Serveur. Le serveur ici est la classe vue précédemment \textit{ServeurTricount}. Une fois le Client connecté, la personne associée aura sa propre interface graphique et va pouvoir ainsi visualiser les dépenses de chacun, calculer l’équilibre ou encore ajouter une dépense. Ceci prend fin lorsque le serveur est fermé.
+Du côté Client c’est assez similaire. On retrouve deux classes \textit{Personne} et \textit{IHM} qui dépendent de la classe main \textit{TricountClient}. Cette classe \textit{TricountClient} va en réalité chercher à se connecter un Serveur. Le serveur ici est la classe vue précédemment \textit{ServeurTricount}. Une fois le Client connecté, la personne associée aura sa propre interface graphique et va pouvoir ainsi visualiser les dépenses de chacun, calculer l’équilibre ou encore ajouter une dépense. Ceci prend fin lorsque le serveur est fermé.\\
+
+Ayant implémenté une interface homme-machine (IHM) nous avons également réalisé un diagramme de classe de ce dernier :
+
+\begin{figure}[H]
+	\center
+	\includegraphics[width=0.9\textwidth]{./Images_pooa/Diagramme_de_classe_IHM}
+	\caption{Diagramme de classe IHM}
+\end{figure}\vspace{0.2cm}
+
+Il s'agit essentiellement de manipulations de JFrame et de JPanel sous toute leurs formes, en ajoutant à cela des boutons permettant d'ouvrir ou de fermer les fenêtres. L'interface est légèrement différente de la maquette.
 
 \section{Paquetage}
 
@@ -294,7 +303,7 @@ Nous avons regroupé les éléments de cette façon : \\
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Paquetage}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Paquetage}
 	\caption{Diagramme de paquetage}
 \end{figure}\vspace{0.2cm}
 
@@ -307,7 +316,7 @@ Le découpage de composants est représenté comme suit :\\
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Composants}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Composants}
 	\caption{Diagramme de composants}
 \end{figure}\vspace{0.2cm}
 
@@ -318,7 +327,7 @@ La demande d’équilibre peut également être demandée au serveur qui, par la
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.7\textwidth]{./Images/Déploiement}
+	\includegraphics[width=0.7\textwidth]{./Images_pooa/Déploiement}
 	\caption{Diagramme de composants}
 \end{figure}\vspace{0.2cm}
 
@@ -349,11 +358,20 @@ Pour effectuer un remboursement on doit juste ajouter une dépense “en inverse
 
 \end{itemize}
 
+\chapter{Problèmes rencontrés durant l'implémentation}
 
+Même si à premiers regards nous pensions que ce projet serait assez simple et rapide vu la simplicité de l'application que tout le monde connaît, il s'en est suivi quelques surprises lors de l'implémentation. En effet ce fut la première fois que nous manipulions le RMI sous forme de projet, et que de plus l'IHM devait gérer les échanges Serveur-Client et Client-Serveur.\\
+
+La première difficulté fut le temps. En effet ne pouvant pas commencer à programmer avant la validation de l'ensemble des diagrammes, il a fallu s'organiser de manière à être à jour sur les travaux du groupe et finir le projet en deux semaines.\\
+
+La deuxième difficulté est très vite apparu lors de l'implémentation de l'IHM. Pour beaucoup d'entre nous, la manipulation des JFrame, JPanel, JButton en java ne nous étaient pas familier et il a fallu lire de nombreuses documentations afin de comprendre comment tout cela marchait. \\
+
+Une fois l'IHM fini, le dernier problème fut de fusionner l'IHM avec le RMI. Lors de partage de code entre chacun d'entre nous grâce à l'outil Git, des fichiers ".class" ne se supprimaient pas ou n'était pas à jour avec un autre camarade ce qui entraînait des erreurs.\\
+
+Toutes ces erreurs furent minimes et nous ont évidemment appris sur la manière de coder java en général et sur le RMI vu en cours.
 
 
 \chapter*{Conclusion}
-\addcontentsline{toc}{chapter}{Conclusion}
 
 
 

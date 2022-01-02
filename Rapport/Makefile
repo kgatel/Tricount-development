@@ -1,2 +1,2 @@
 clean : 
-	rm *.aux *.out *.synctex.gz *.toc *.log
+	rm *.aux *.out *.synctex.gz *.toc *.log *.lof
