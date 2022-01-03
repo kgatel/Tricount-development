@@ -44,8 +44,8 @@ public class Client {
 
 			// Choix de l'ip si plusieurs sur la carte réseau
 			// nécessaire hors INSA
-			System.out.println("Vous avez plusieur IP veuilliez en choisir une."); 
 			if (ip.size() > 1) {
+				System.out.println("Vous avez plusieur IP veuilliez en choisir une."); 
 				for (int i=0;i<ip.size();i++) {
 					System.out.println("IP n° "+i+": " + ip.get(i));
 				}
