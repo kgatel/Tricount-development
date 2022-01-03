@@ -366,9 +366,14 @@ La première difficulté fut le temps. En effet ne pouvant pas commencer à prog
 
 La deuxième difficulté est très vite apparu lors de l'implémentation de l'IHM. Pour beaucoup d'entre nous, la manipulation des JFrame, JPanel, JButton en java ne nous étaient pas familier et il a fallu lire de nombreuses documentations afin de comprendre comment tout cela marchait. \\
 
-Une fois l'IHM fini, le dernier problème fut de fusionner l'IHM avec le RMI. Lors de partage de code entre chacun d'entre nous grâce à l'outil Git, des fichiers ".class" ne se supprimaient pas ou n'était pas à jour avec un autre camarade ce qui entraînait des erreurs.\\
+Une fois l'IHM fini, il a fallu fusionner l'IHM avec le RMI. Lors de partage de code entre chacun d'entre nous grâce à l'outil Git, des fichiers ".class" ne se supprimaient pas ou n'était pas à jour avec un autre camarade ce qui entraînait des erreurs.\\
 
-Toutes ces erreurs furent minimes et nous ont évidemment appris sur la manière de coder java en général et sur le RMI vu en cours.
+La dernière fut lors de nos tests en LAN . Nous sommes tombés face à un problème de réseau. Notre application qui fonctionnait très bien en local n’a pas réussi à se connecter. Pour cela nous avons dû mettre la commande: \textit{System.setProperty("java.rmi.server.hostname", "Mon IP");}
+
+Or “mon IP” est un texte en dur. Ce détail détruit tous les efforts que nous avons fait pour rendre le code le plus portable possible ( affichage IP serveur, choix du port…). Nous avons donc dû trouver l’IP de la machine sur le réseau local et le mettre en paramètre du “setProperty”. Or certains ordinateurs ont plusieurs interfaces réseaux, ethernet (eth0) et wireless (wth0) par exemple. Pour ne pas imposer le choix nous avons décidé de laisser choisir l’utilisateur. Si la carte réseau à plusieurs interfaces dans ce cas elles seront proposées à l’utilisateur, sinon elle sera mise automatiquement. Évidemment la méthode est la même pour le client mais si il n’y a qu’une interface nous avons décidé de ne pas surcharger son terminal et donc de ne rien afficher. \\ 
+
+
+Toutes ces erreurs furent néanmoins minimes et nous ont évidemment appris sur la matière et la manière de coder en java en général.
 
 
 \chapter*{Conclusion}
