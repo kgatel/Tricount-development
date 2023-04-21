@@ -1,4 +1,4 @@
-# Projet POOA
+# Tricount development
 
 Réalisation d'un tricount en java.
 
